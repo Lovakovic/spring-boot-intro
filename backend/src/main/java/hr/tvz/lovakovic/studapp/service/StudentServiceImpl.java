@@ -8,13 +8,11 @@ import hr.tvz.lovakovic.studapp.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.Period;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static hr.tvz.lovakovic.studapp.repository.StudentRepositoryImpl.students;
+import static hr.tvz.lovakovic.studapp.repository.StudentRepositoryDev.students;
 
 @Service
 public class StudentServiceImpl implements StudentService {

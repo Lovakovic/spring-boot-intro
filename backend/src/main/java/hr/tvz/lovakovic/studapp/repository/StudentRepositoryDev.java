@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Repository
 @Profile("dev")
-public class StudentRepositoryImpl implements StudentRepository {
+public class StudentRepositoryDev implements StudentRepository {
     public static List<Student> students = new ArrayList<>();
 
     static {
