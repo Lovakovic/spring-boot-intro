@@ -1,4 +1,4 @@
-package hr.tvz.lovakovic.studapp.domain;
+package hr.tvz.lovakovic.studapp.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

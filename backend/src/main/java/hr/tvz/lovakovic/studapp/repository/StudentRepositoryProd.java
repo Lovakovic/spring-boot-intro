@@ -1,6 +1,6 @@
 package hr.tvz.lovakovic.studapp.repository;
 
-import hr.tvz.lovakovic.studapp.domain.Student;
+import hr.tvz.lovakovic.studapp.model.Student;
 import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,8 +16,10 @@ public class StudentRepositoryProd implements StudentRepository{
     public static List<Student> students = new ArrayList<>();
 
     static {
-        students.add(new Student("Ivo", "Mirkovic", LocalDate.of(2000, 9, 22), "0246099663", 176));
-        students.add(new Student("Ivana", "Ivanovic", LocalDate.of(1998, 1, 1), "0182758279", 150));
+        students.add(new Student("Ivo", "Mirkovic", LocalDate.of(2000, 9, 22),
+                "0246099663", 176, 2019, 6));
+        students.add(new Student("Ivana", "Ivanovic", LocalDate.of(1998, 1, 1),
+                "0182758279", 150, 2019, 6));
     }
 
     @Override

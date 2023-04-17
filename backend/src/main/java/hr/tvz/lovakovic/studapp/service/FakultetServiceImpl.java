@@ -1,8 +1,8 @@
 package hr.tvz.lovakovic.studapp.service;
 
 import hr.tvz.lovakovic.studapp.command.FakultetCommand;
-import hr.tvz.lovakovic.studapp.domain.Fakultet;
-import hr.tvz.lovakovic.studapp.dto.FakultetDTO;
+import hr.tvz.lovakovic.studapp.model.Fakultet;
+import hr.tvz.lovakovic.studapp.model.FakultetDTO;
 import hr.tvz.lovakovic.studapp.repository.FakultetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

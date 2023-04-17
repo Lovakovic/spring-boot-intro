@@ -1,10 +1,12 @@
-package hr.tvz.lovakovic.studapp.dto;
+package hr.tvz.lovakovic.studapp.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class StudentDTO {
@@ -14,6 +16,6 @@ public class StudentDTO {
 
     // New attributes
     private String fullName;
-    private Integer enrolledAtYear;
+    private Integer enrolledStudiesAtYear;
     private Integer currentSemester;
 }

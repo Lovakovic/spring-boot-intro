@@ -1,8 +1,9 @@
 package hr.tvz.lovakovic.studapp.service;
 
-import hr.tvz.lovakovic.studapp.domain.Student;
+import hr.tvz.lovakovic.studapp.mapper.StudentMapper;
+import hr.tvz.lovakovic.studapp.model.Student;
 import hr.tvz.lovakovic.studapp.command.StudentCommand;
-import hr.tvz.lovakovic.studapp.dto.StudentDTO;
+import hr.tvz.lovakovic.studapp.model.StudentDTO;
 import hr.tvz.lovakovic.studapp.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,8 +47,7 @@ public class StudentServiceImpl implements StudentService {
             return false;
         }
 
-        Student student = new Student(studentCommand.getFirstName(), studentCommand.getLastName(),
-                studentCommand.getDateOfBirth(), studentCommand.getJmbag(), studentCommand.getEctsPoints());
+        Student student = StudentMapper.fromCommand(studentCommand);
         studentRepository.save(student);
         return true;
     }
@@ -66,7 +66,6 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public StudentDTO convertToStudentDTO(Student student) {
-        boolean shouldPayTuition = Period.between(student.getDateOfBirth(), LocalDate.now()).getYears() >= 26;
-        return new StudentDTO(student.getJmbag(), student.getEctsPoints(), shouldPayTuition);
+        return StudentMapper.toDTO(student);
     }
 }

@@ -1,4 +1,4 @@
-package hr.tvz.lovakovic.studapp.domain;
+package hr.tvz.lovakovic.studapp.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,4 +17,6 @@ public class Student {
     private LocalDate dateOfBirth;
     private String jmbag;
     private Integer ectsPoints;
+    private Integer enrolledStudiesAtYear;
+    private Integer currentSemester;
 }

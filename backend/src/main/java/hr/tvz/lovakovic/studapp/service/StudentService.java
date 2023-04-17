@@ -1,8 +1,8 @@
 package hr.tvz.lovakovic.studapp.service;
 
 import hr.tvz.lovakovic.studapp.command.StudentCommand;
-import hr.tvz.lovakovic.studapp.dto.StudentDTO;
-import hr.tvz.lovakovic.studapp.domain.Student;
+import hr.tvz.lovakovic.studapp.model.StudentDTO;
+import hr.tvz.lovakovic.studapp.model.Student;
 
 import java.util.List;
 

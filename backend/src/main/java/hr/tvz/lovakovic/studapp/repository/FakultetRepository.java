@@ -1,6 +1,6 @@
 package hr.tvz.lovakovic.studapp.repository;
 
-import hr.tvz.lovakovic.studapp.domain.Fakultet;
+import hr.tvz.lovakovic.studapp.model.Fakultet;
 
 import java.util.List;
 import java.util.Optional;

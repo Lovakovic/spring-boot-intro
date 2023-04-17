@@ -1,7 +1,7 @@
 package hr.tvz.lovakovic.studapp.controller;
 
 import hr.tvz.lovakovic.studapp.command.FakultetCommand;
-import hr.tvz.lovakovic.studapp.dto.FakultetDTO;
+import hr.tvz.lovakovic.studapp.model.FakultetDTO;
 import hr.tvz.lovakovic.studapp.service.FakultetService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

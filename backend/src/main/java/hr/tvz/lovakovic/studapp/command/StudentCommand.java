@@ -3,6 +3,7 @@ package hr.tvz.lovakovic.studapp.command;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,6 +22,7 @@ public class StudentCommand {
     private String lastName;
 
     @NotNull(message = "Date of birth must not be null")
+    @Past(message = "Date of birth cannot be in future or present")
     private LocalDate dateOfBirth;
 
     @NotBlank(message = "JMBAG must not be blank")
@@ -28,5 +30,11 @@ public class StudentCommand {
     private String jmbag;
 
     @NotNull(message = "ECTS points must not be null")
-    private int ectsPoints;
+    private Integer ectsPoints;
+
+    @NotNull(message = "Year of enrollment must not be empty")
+    private Integer enrolledStudiesAtYear;
+
+    @NotNull(message = "Current semester must not be empty")
+    private Integer currentSemester;
 }
