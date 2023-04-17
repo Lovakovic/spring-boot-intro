@@ -10,7 +10,7 @@ public interface StudentService {
     List<StudentDTO> findAll();
 
     StudentDTO findStudentByJMBAG(String JMBAG);
-    Boolean addStudent(StudentCommand studentCommand);
+    StudentDTO addStudent(StudentCommand studentCommand);
     Boolean deleteStudentByJMBAG(String JMBAG);
     StudentDTO convertToStudentDTO(Student student);
 }

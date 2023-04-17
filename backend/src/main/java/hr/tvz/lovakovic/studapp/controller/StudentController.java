@@ -1,5 +1,6 @@
 package hr.tvz.lovakovic.studapp.controller;
 
+import hr.tvz.lovakovic.studapp.exception.StudentAlreadyExistsException;
 import hr.tvz.lovakovic.studapp.model.StudentCommand;
 import hr.tvz.lovakovic.studapp.model.StudentDTO;
 import hr.tvz.lovakovic.studapp.service.StudentService;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/students")
@@ -38,13 +40,14 @@ public class StudentController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> addStudent(@Valid @RequestBody StudentCommand studentCommand) {
-        boolean added = studentService.addStudent(studentCommand);
-        if (added) {
-            return ResponseEntity.status(HttpStatus.CREATED).build();
-        } else {
-            return ResponseEntity.status(HttpStatus.CONFLICT).build();
-        }
+    public ResponseEntity<StudentDTO> addStudent(@Valid @RequestBody StudentCommand studentCommand) {
+        StudentDTO studentDTO = studentService.addStudent(studentCommand);
+        return new ResponseEntity<>(studentDTO, HttpStatus.CREATED);
+    }
+
+    @ExceptionHandler(StudentAlreadyExistsException.class)
+    public ResponseEntity<Void> handleStudentAlreadyExistsException(StudentAlreadyExistsException ex) {
+        return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
 
     @DeleteMapping("/{JMBAG}")

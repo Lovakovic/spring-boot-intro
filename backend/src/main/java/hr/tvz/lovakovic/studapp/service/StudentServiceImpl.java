@@ -1,5 +1,6 @@
 package hr.tvz.lovakovic.studapp.service;
 
+import hr.tvz.lovakovic.studapp.exception.StudentAlreadyExistsException;
 import hr.tvz.lovakovic.studapp.mapper.StudentMapper;
 import hr.tvz.lovakovic.studapp.model.Student;
 import hr.tvz.lovakovic.studapp.model.StudentCommand;
@@ -39,15 +40,14 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Boolean addStudent(StudentCommand studentCommand) {
+    public StudentDTO addStudent(StudentCommand studentCommand) {
         // Check if the student already exists
         if (studentRepository.findStudentByJMBAG(studentCommand.getJmbag()).isPresent()) {
-            return false;
+            throw new StudentAlreadyExistsException("A student with the given JMBAG already exists.");
         }
 
-        Student student = StudentMapper.fromCommand(studentCommand);
-        studentRepository.save(student);
-        return true;
+        Student savedStudent = studentRepository.save(StudentMapper.fromCommand(studentCommand));
+        return StudentMapper.toDTO(savedStudent);
     }
 
 
