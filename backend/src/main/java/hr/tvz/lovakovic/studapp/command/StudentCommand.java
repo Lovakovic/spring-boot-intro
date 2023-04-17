@@ -1,0 +1,32 @@
+package hr.tvz.lovakovic.studapp.command;
+
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.time.LocalDate;
+
+@AllArgsConstructor
+@Getter
+@Setter
+public class StudentCommand {
+    @NotBlank(message = "First name must not be blank")
+    private String firstName;
+
+    @NotBlank(message = "Last name must not be blank")
+    private String lastName;
+
+    @NotNull(message = "Date of birth must not be null")
+    private LocalDate dateOfBirth;
+
+    @NotBlank(message = "JMBAG must not be blank")
+    @Size(min = 10, max = 10, message = "JMBAG must be exactly 10 characters long")
+    private String jmbag;
+
+    @NotNull(message = "ECTS points must not be null")
+    private int ectsPoints;
+}

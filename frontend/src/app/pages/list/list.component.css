@@ -1,0 +1,75 @@
+.component-container {
+  max-width: 22.5rem;
+}
+
+.filters-container {
+  margin: 2rem 0;
+}
+
+.search-bar {
+  border: none;
+  box-sizing: border-box;
+  padding: 0.7rem 0 0.7rem 0.7rem;
+  font-size: larger;
+  width: 100%;
+}
+
+.sort-btn {
+  margin-top: 1rem;
+  padding: 0.7rem;
+  font-size: large;
+  width: 100%;
+  border: none;
+}
+
+.sort-btn:hover {
+  background-color: #3f4358;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.list-item a:hover {
+  border: solid 1px white;
+  border-radius: 0.5rem;
+}
+
+
+.list-item a {
+  display: flex;
+  width: 100%;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.jmbag-field {
+  flex: 3;
+  margin: 0;
+}
+
+.ects-field {
+  flex: 4;
+  margin: 0;
+}
+
+.p-s {
+  padding: 1rem;
+}
+
+.rounded {
+  border-radius: 0.5rem;
+}
+
+.rounded-left {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.rounded-right {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}

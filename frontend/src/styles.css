@@ -1,0 +1,25 @@
+body {
+  margin: 2rem;
+  background-color: #0d0c0b;
+  color: white;
+}
+
+.text-color {
+  color: #969699;
+}
+
+.accent-dark {
+  background-color: #1e2230;
+}
+
+.accent-light {
+  background-color: #2e344a;
+}
+
+.container-dark {
+  background-color: #111217;
+}
+
+.container-light {
+  background-color: #22242b;
+}
