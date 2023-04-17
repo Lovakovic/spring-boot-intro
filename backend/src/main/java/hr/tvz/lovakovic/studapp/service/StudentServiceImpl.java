@@ -2,7 +2,7 @@ package hr.tvz.lovakovic.studapp.service;
 
 import hr.tvz.lovakovic.studapp.mapper.StudentMapper;
 import hr.tvz.lovakovic.studapp.model.Student;
-import hr.tvz.lovakovic.studapp.command.StudentCommand;
+import hr.tvz.lovakovic.studapp.model.StudentCommand;
 import hr.tvz.lovakovic.studapp.model.StudentDTO;
 import hr.tvz.lovakovic.studapp.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package hr.tvz.lovakovic.studapp.mapper;
 
-import hr.tvz.lovakovic.studapp.command.StudentCommand;
+import hr.tvz.lovakovic.studapp.model.StudentCommand;
 import hr.tvz.lovakovic.studapp.model.Student;
 import hr.tvz.lovakovic.studapp.model.StudentDTO;
 

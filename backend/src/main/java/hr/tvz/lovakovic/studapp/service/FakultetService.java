@@ -1,6 +1,6 @@
 package hr.tvz.lovakovic.studapp.service;
 
-import hr.tvz.lovakovic.studapp.command.FakultetCommand;
+import hr.tvz.lovakovic.studapp.model.FakultetCommand;
 import hr.tvz.lovakovic.studapp.model.Fakultet;
 import hr.tvz.lovakovic.studapp.model.FakultetDTO;
 

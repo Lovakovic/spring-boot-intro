@@ -1,4 +1,4 @@
-package hr.tvz.lovakovic.studapp.command;
+package hr.tvz.lovakovic.studapp.model;
 
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NegativeOrZero;

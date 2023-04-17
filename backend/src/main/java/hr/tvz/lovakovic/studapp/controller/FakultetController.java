@@ -1,6 +1,6 @@
 package hr.tvz.lovakovic.studapp.controller;
 
-import hr.tvz.lovakovic.studapp.command.FakultetCommand;
+import hr.tvz.lovakovic.studapp.model.FakultetCommand;
 import hr.tvz.lovakovic.studapp.model.FakultetDTO;
 import hr.tvz.lovakovic.studapp.service.FakultetService;
 import jakarta.validation.Valid;
