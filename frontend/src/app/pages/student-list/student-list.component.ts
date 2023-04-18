@@ -9,26 +9,46 @@ import Student from "../../model/student.model";
 })
 export class StudentListComponent implements OnInit {
   jmbagFilter: string = '';
+  sortOrder: string = 'asc';
   students: Student[] = [];
+  displayStudents: Student[] = [];
 
   constructor(public studentService: StudentService) {}
 
   ngOnInit(): void {
-    // Subscribe to students$ and update the local students array when it changes
-    this.studentService.students$.subscribe((students) => {
-      this.students = students;
+    this.studentService.getStudents().subscribe((_students) => {
+      this.students = _students;
+      this.displayStudents = [...this.students];
     });
   }
 
   onFilterByJmbagChanged() {
-    this.studentService.filterByJmbag(this.jmbagFilter);
+    this.filterByJmbag(this.jmbagFilter);
+  }
+
+  filterByJmbag(jmbag: string) {
+    if (jmbag !== '') {
+      this.displayStudents = this.students.filter((student) => student.jmbag.startsWith(jmbag));
+    } else {
+      this.displayStudents = [...this.students];
+    }
   }
 
   onToggleSort() {
-    this.studentService.toggleSort();
+    this.displayStudents = [...this.displayStudents].sort((studentA, studentB) => {
+      if (this.sortOrder === 'desc') {
+        return studentA.ectsPoints - studentB.ectsPoints;
+      } else {
+        return studentB.ectsPoints - studentA.ectsPoints;
+      }
+    });
+    this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
   }
 
   onDeleteStudent(jmbag: string): void {
-    this.studentService.deleteStudent(jmbag).subscribe();
+    this.studentService.deleteStudent(jmbag).subscribe(() => {
+      this.students = this.students.filter(student => student.jmbag !== jmbag);
+      this.displayStudents = [...this.students];
+    });
   }
 }

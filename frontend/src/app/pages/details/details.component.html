@@ -1,5 +1,5 @@
 <a [routerLink]="['/list']" class="link-btn bg-accent-dark p-s my-s">Back to the list</a>
-<ng-container *ngIf="student$ | async as student">
+<ng-container *ngIf="student else loading">
   <h3>{{student.jmbag}} - detalji studenta</h3>
   <p>JMBAG: {{student.jmbag}}</p>
   <p>Broj ECTS bodova: {{student.ectsPoints}}</p>
@@ -10,3 +10,6 @@
     <p>Trenutni semestar: {{student.currentSemester}}</p>
   </ng-container>
 </ng-container>
+<ng-template #loading>
+  <h3>Loading student info...</h3>
+</ng-template>

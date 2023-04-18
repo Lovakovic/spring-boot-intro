@@ -1,26 +1,25 @@
 import {Component, OnInit} from '@angular/core';
-import {StudentService} from "../../service/student.service";
-import {ActivatedRoute} from "@angular/router";
-import {Observable} from "rxjs";
 import Student from "../../model/student.model";
+import {ActivatedRoute} from "@angular/router";
+import {StudentService} from "../../service/student.service";
 
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html'
 })
 export class DetailsComponent implements OnInit {
-  jmbag!: string;
-  student$!: Observable<Student | null>;
+  student?: Student;
 
-  constructor(
-    public studentService: StudentService,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private route: ActivatedRoute,
+              private studentService: StudentService) {}
 
   ngOnInit(): void {
-    this.jmbag = this.route.snapshot.paramMap.get('jmbag') as string;
-    this.student$ = this.studentService.getLocalStudentByJmbag(this.jmbag);
+    let studentJmbag = this.route.snapshot.paramMap.get('jmbag') as string;
+    this.studentService.getStudentByJmbag(studentJmbag).subscribe(_student => {
+      this.student = _student;
+    })
   }
+
 
   protected readonly Number = Number;
 }

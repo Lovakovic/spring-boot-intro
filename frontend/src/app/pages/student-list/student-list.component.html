@@ -11,7 +11,7 @@
         (click)="onToggleSort()"
       >Promijeni sort</button>
     </div>
-    <div *ngFor="let student of students"
+    <div *ngFor="let student of displayStudents"
          class="list-item"
     >
       <a [routerLink]="['/details', student.jmbag]">
