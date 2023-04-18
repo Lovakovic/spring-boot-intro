@@ -1,14 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {StudentService} from "../../../../service/student.service";
-import Student from "../../../../model/student.model";
+import {StudentService} from "../../service/student.service";
+import Student from "../../model/student.model";
 
 @Component({
-  selector: 'app-new-student',
-  templateUrl: './new-student.component.html',
-  styleUrls: ['./new-student.component.css']
+  selector: 'app-edit-student',
+  templateUrl: './edit-student.component.html',
+  styleUrls: ['./edit-student.component.css']
 })
-export class NewStudentComponent implements OnInit {
+export class EditStudentComponent implements OnInit {
+  @Input() title! : string;
   addStudentForm: FormGroup;
 
   constructor(

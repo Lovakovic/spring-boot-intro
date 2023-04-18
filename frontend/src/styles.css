@@ -1,7 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 2rem;
   background-color: #0d0c0b;
-  color: var(--primary-text)
+  color: var(--primary-text);
+  max-width: 22.5rem;
 }
 
 :root {
@@ -23,52 +28,10 @@ body {
   background-color: var(--background-light);
 }
 
-.rounded {
-  border-radius: 0.5rem;
-}
-
--mt-s {
-  margin-top: 1rem;
-}
-
-.m-s {
-  margin: 1rem;
-}
-
-.m-m {
-  margin: 2rem;
-}
-
-.my-s {
-  margin: 1rem 0 1rem 0;
-}
-
-.p-s {
-  padding: 1rem;
-}
-
-.rounded-left {
-  border-top-left-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
-}
-
-.rounded-right {
-  border-top-right-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
-}
-
 .link-btn {
   color: var(--primary-text);
-  display: block;
-  width: fit-content;
-  text-decoration: none;
 }
 
 .link-btn:hover {
   color: var(--secondary-text);
 }
-
-.component-container {
-  max-width: 22.5rem;
-}
-

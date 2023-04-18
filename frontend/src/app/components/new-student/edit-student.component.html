@@ -1,0 +1,31 @@
+<div>
+  <h4 class="text-xl">{{title}}</h4>
+  <hr class="mt-2">
+  <form [formGroup]="addStudentForm" (ngSubmit)="onSubmit()" class="py-4">
+    <div class="flex justify-between mb-3">
+      <label for="firstName">First Name:</label>
+      <input id="firstName" type="text" formControlName="firstName" class="text-black">
+    </div>
+    <div class="flex justify-between mb-3">
+      <label for="lastName">Last Name:</label>
+      <input id="lastName" type="text" formControlName="lastName" class="text-black">
+    </div>
+    <div class="flex justify-between mb-3">
+      <label for="jmbag">JMBAG:</label>
+      <input id="jmbag" type="text" formControlName="jmbag" class="text-black">
+    </div>
+    <div class="flex justify-between mb-3">
+      <label for="ectsPoints">ECTS Points:</label>
+      <input id="ectsPoints" type="number" formControlName="ectsPoints" class="text-black">
+    </div>
+    <div class="flex justify-between mb-3">
+      <label for="enrolledStudiesAtYear">Year of Enrollment:</label>
+      <input id="enrolledStudiesAtYear" type="number" formControlName="enrolledStudiesAtYear" class="text-black">
+    </div>
+    <div class="flex justify-between mb-3">
+      <label for="currentSemester">Current Semester:</label>
+      <input id="currentSemester" type="number" formControlName="currentSemester" class="text-black">
+    </div>
+    <button type="submit" class="submit-btn rounded-md w-full p-3">Submit</button>
+  </form>
+</div>

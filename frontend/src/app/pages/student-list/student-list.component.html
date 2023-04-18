@@ -1,25 +1,25 @@
-<div class="component-container">
-  <div>
-    <h1 class="text-dark">Popis studenata</h1>
-    <div class="filters-container">
-        <input type="text" placeholder="Enter JMBAG"
-               [(ngModel)]="jmbagFilter"
-               (input)="onFilterByJmbagChanged()"
-               class="search-bar bg-accent-dark text-dark rounded"
-        >
-      <button class="sort-btn rounded bg-accent-light text-dark"
-        (click)="onToggleSort()"
-      >Promijeni sort</button>
-    </div>
-    <div *ngFor="let student of displayStudents"
-         class="list-item"
+<div class="mb-10">
+  <h1 class="text-dark text-3xl">Popis studenata</h1>
+  <div class="my-7">
+    <input type="text" placeholder="Enter JMBAG"
+           [(ngModel)]="jmbagFilter"
+           (input)="onFilterByJmbagChanged()"
+           class="bg-accent-dark text-dark rounded-md border-0 py-3 pl-3 w-full text-lg"
     >
-      <a [routerLink]="['/details', student.jmbag]">
-        <p class="jmbag-field bg-accent-dark p-s rounded-left">{{student.jmbag}}</p>
-        <p class="ects-field bg-accent-light p-s rounded-right">{{student.ectsPoints}} ECTS</p>
-      </a>
-      <button class="delete-btn rounded bg-danger text-light" (click)="onDeleteStudent(student.jmbag)">Delete</button>
-    </div>
+    <button class="bg-accent-light text-dark sort-btn rounded-md mt-4 p-3 text-lg w-full border-0"
+            (click)="onToggleSort()"
+    >Change sort</button>
+  </div>
+  <div *ngFor="let student of displayStudents" class="student-link flex w-full my-2 items-stretch">
+    <a [routerLink]="['/details', student.jmbag]" class="flex w-full text-center decoration-0">
+      <div class="flex flex-1 w-3/7">
+        <p class="bg-accent-dark rounded-l-md m-0 w-full flex items-center justify-center py-2">{{student.jmbag}}</p>
+      </div>
+      <div class="flex flex-1 w-4/7">
+        <p class="bg-accent-light m-0 w-full flex items-center justify-center py-2">{{student.ectsPoints}} ECTS</p>
+      </div>
+    </a>
+    <button class="delete-btn bg-gray-400 rounded-r-md p-4 text-md w-1/7 border-0" (click)="onDeleteStudent(student.jmbag)">Delete</button>
   </div>
 </div>
-<app-new-student></app-new-student>
+<app-edit-student [title]="'Add a new Student'"></app-edit-student>

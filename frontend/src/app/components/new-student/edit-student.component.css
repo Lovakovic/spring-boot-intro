@@ -1,0 +1,7 @@
+.submit-btn {
+  background-color: var(--background-light);
+}
+
+.submit-btn:hover {
+  background-color: var(--background-dark);
+}
