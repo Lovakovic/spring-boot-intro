@@ -1,3 +1,2 @@
 Todo
-- gut the new-student component and make it modular, so it can also be used to edit student
 - display all info in every case on student details page
