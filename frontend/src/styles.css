@@ -1,25 +1,74 @@
 body {
   margin: 2rem;
   background-color: #0d0c0b;
-  color: white;
+  color: var(--primary-text)
 }
 
-.text-color {
-  color: #969699;
+:root {
+  --primary-text: #ffffff;
+  --secondary-text: #969699;
+  --background-dark: #1e2230;
+  --background-light: #2e344a;
 }
 
-.accent-dark {
-  background-color: #1e2230;
+.text-dark {
+  color: var(--secondary-text);
 }
 
-.accent-light {
-  background-color: #2e344a;
+.bg-accent-dark {
+  background-color: var(--background-dark);
 }
 
-.container-dark {
-  background-color: #111217;
+.bg-accent-light {
+  background-color: var(--background-light);
 }
 
-.container-light {
-  background-color: #22242b;
+.rounded {
+  border-radius: 0.5rem;
 }
+
+-mt-s {
+  margin-top: 1rem;
+}
+
+.m-s {
+  margin: 1rem;
+}
+
+.m-m {
+  margin: 2rem;
+}
+
+.my-s {
+  margin: 1rem 0 1rem 0;
+}
+
+.p-s {
+  padding: 1rem;
+}
+
+.rounded-left {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.rounded-right {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.link-btn {
+  color: var(--primary-text);
+  display: block;
+  width: fit-content;
+  text-decoration: none;
+}
+
+.link-btn:hover {
+  color: var(--secondary-text);
+}
+
+.component-container {
+  max-width: 22.5rem;
+}
+

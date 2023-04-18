@@ -1,11 +1,12 @@
-<div>
+<a [routerLink]="['/list']" class="link-btn bg-accent-dark p-s my-s">Back to the list</a>
+<ng-container *ngIf="student$ | async as student">
   <h3>{{student.jmbag}} - detalji studenta</h3>
   <p>JMBAG: {{student.jmbag}}</p>
   <p>Broj ECTS bodova: {{student.ectsPoints}}</p>
   <p>{{student.shouldPayTuition ? 'Student treba platiti školarinu' : ''}}</p>
   <ng-container *ngIf="Number.parseInt(student.jmbag) % 2 !== 0">
     <p>Ime: {{student.fullName}}</p>
-    <p>Godina upisa prvog semestra: {{student.enrolledAtYear}}</p>
+    <p>Godina upisa prvog semestra: {{student.enrolledStudiesAtYear}}</p>
     <p>Trenutni semestar: {{student.currentSemester}}</p>
   </ng-container>
-</div>
+</ng-container>

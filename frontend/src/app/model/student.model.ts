@@ -5,6 +5,6 @@ export default interface Student {
 
   // New attributes
   fullName: string;
-  enrolledAtYear: number;
+  enrolledStudiesAtYear: number;
   currentSemester: number;
 }

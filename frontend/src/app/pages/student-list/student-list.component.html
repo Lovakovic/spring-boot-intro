@@ -1,0 +1,25 @@
+<div class="component-container">
+  <div>
+    <h1 class="text-dark">Popis studenata</h1>
+    <div class="filters-container">
+        <input type="text" placeholder="Enter JMBAG"
+               [(ngModel)]="jmbagFilter"
+               (input)="onFilterByJmbagChanged()"
+               class="search-bar bg-accent-dark text-dark rounded"
+        >
+      <button class="sort-btn rounded bg-accent-light text-dark"
+        (click)="onToggleSort()"
+      >Promijeni sort</button>
+    </div>
+    <div *ngFor="let student of students"
+         class="list-item"
+    >
+      <a [routerLink]="['/details', student.jmbag]">
+        <p class="jmbag-field bg-accent-dark p-s rounded-left">{{student.jmbag}}</p>
+        <p class="ects-field bg-accent-light p-s rounded-right">{{student.ectsPoints}} ECTS</p>
+      </a>
+      <button class="delete-btn rounded bg-danger text-light" (click)="onDeleteStudent(student.jmbag)">Delete</button>
+    </div>
+  </div>
+</div>
+<app-new-student></app-new-student>

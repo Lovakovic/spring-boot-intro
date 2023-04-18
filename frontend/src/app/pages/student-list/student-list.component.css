@@ -26,6 +26,14 @@
   background-color: #3f4358;
 }
 
+.delete-btn {
+  padding: 1rem;
+  font-size: large;
+  height: 100%;
+  max-width: 5rem;
+  border: none;
+}
+
 .list-item {
   display: flex;
   justify-content: space-between;
@@ -44,6 +52,8 @@
   width: 100%;
   text-align: center;
   margin: 1rem 0;
+  text-decoration: none;
+  color: var(--primary-text);
 }
 
 .jmbag-field {
@@ -56,20 +66,3 @@
   margin: 0;
 }
 
-.p-s {
-  padding: 1rem;
-}
-
-.rounded {
-  border-radius: 0.5rem;
-}
-
-.rounded-left {
-  border-top-left-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
-}
-
-.rounded-right {
-  border-top-right-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
-}
