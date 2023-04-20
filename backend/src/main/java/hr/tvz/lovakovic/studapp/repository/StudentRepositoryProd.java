@@ -16,10 +16,10 @@ public class StudentRepositoryProd implements StudentRepository{
     public static List<Student> students = new ArrayList<>();
 
     static {
-        students.add(new Student("Ivo", "Mirkovic", LocalDate.of(2000, 9, 22),
-                "0246099663", 176, 2019, 6));
-        students.add(new Student("Ivana", "Ivanovic", LocalDate.of(1998, 1, 1),
-                "0182758279", 150, 2019, 6));
+        students.add(new Student("0246099663","Ivo", "Mirkovic", LocalDate.of(2000, 9, 22),
+                 176, 2019, 6));
+        students.add(new Student("0182758279","Ivana", "Ivanovic", LocalDate.of(1998, 1, 1),
+                 150, 2019, 6));
     }
 
     @Override
