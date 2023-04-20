@@ -1,20 +1,18 @@
 package hr.tvz.lovakovic.studapp.mapper;
 
-import hr.tvz.lovakovic.studapp.model.StudentCommand;
 import hr.tvz.lovakovic.studapp.model.Student;
+import hr.tvz.lovakovic.studapp.model.StudentCommand;
 import hr.tvz.lovakovic.studapp.model.StudentDTO;
 
-import java.time.LocalDate;
-import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
 public class StudentMapper {
     public static Student fromCommand(StudentCommand studentCommand) {
         return new Student(
+                studentCommand.getJmbag(),
                 studentCommand.getFirstName(),
                 studentCommand.getLastName(),
                 studentCommand.getDateOfBirth(),
-                studentCommand.getJmbag(),
                 studentCommand.getEctsPoints(),
                 studentCommand.getEnrolledStudiesAtYear(),
                 studentCommand.getCurrentSemester()
