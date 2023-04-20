@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/students")
@@ -44,6 +45,19 @@ public class StudentController {
     public ResponseEntity<StudentDTO> addStudent(@Valid @RequestBody StudentCommand studentCommand) {
         StudentDTO studentDTO = studentService.addStudent(studentCommand);
         return new ResponseEntity<>(studentDTO, HttpStatus.CREATED);
+    }
+
+    @PutMapping
+    public ResponseEntity<StudentDTO> putStudent(@Valid @RequestBody StudentCommand studentCommand) {
+        Optional<StudentDTO> updatedStudent = studentService.putStudent(studentCommand);
+
+        if (!updatedStudent.isPresent()) {
+            return new ResponseEntity<>(updatedStudent.get(), HttpStatus.CREATED);
+        } else if(updatedStudent.isPresent()) {
+            return new ResponseEntity<>(updatedStudent.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @ExceptionHandler(StudentAlreadyExistsException.class)

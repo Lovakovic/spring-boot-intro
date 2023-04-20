@@ -50,6 +50,23 @@ public class StudentServiceImpl implements StudentService {
         return StudentMapper.toDTO(savedStudent);
     }
 
+    @Override
+    public Optional<StudentDTO> putStudent(StudentCommand studentCommand) {
+        Optional<Student> existingStudent = studentRepository.findStudentByJMBAG(studentCommand.getJmbag());
+
+
+        if (existingStudent.isPresent()) {
+            // Update existing student
+            Student updatedStudent = StudentMapper.fromCommand(studentCommand);
+            studentRepository.save(updatedStudent);
+            return Optional.empty();
+        } else {
+            // Create new student
+            Student newStudent = StudentMapper.fromCommand(studentCommand);
+            Student savedStudent = studentRepository.save(newStudent);
+            return Optional.of(StudentMapper.toDTO(savedStudent));
+        }
+    }
 
     @Override
     public Boolean deleteStudentByJMBAG(String jmbag) {
