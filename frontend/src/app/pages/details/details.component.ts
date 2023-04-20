@@ -9,6 +9,7 @@ import {StudentService} from "../../service/student.service";
 })
 export class DetailsComponent implements OnInit {
   student?: Student;
+  editMode: boolean = false;
 
   constructor(private route: ActivatedRoute,
               private studentService: StudentService) {}

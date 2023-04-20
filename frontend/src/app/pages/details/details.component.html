@@ -1,12 +1,17 @@
 <a [routerLink]="['/list']" class="link-btn bg-accent-dark inline-block w-auto p-4 my-4">Back to the list</a>
 <ng-container *ngIf="student else loading">
-  <h3>{{student.jmbag}} - detalji studenta</h3>
-  <p>JMBAG: {{student.jmbag}}</p>
-  <p>Broj ECTS bodova: {{student.ectsPoints}}</p>
-  <p>{{student.shouldPayTuition ? 'Student treba platiti školarinu' : ''}}</p>
-  <p>Ime: {{student.fullName}}</p>
-  <p>Godina upisa prvog semestra: {{student.enrolledStudiesAtYear}}</p>
-  <p>Trenutni semestar: {{student.currentSemester}}</p>
+  <div *ngIf="!editMode">
+    <h3>{{student.jmbag}} - detalji studenta</h3>
+    <p>JMBAG: {{student.jmbag}}</p>
+    <p>Broj ECTS bodova: {{student.ectsPoints}}</p>
+    <p>Ime i prezime: {{student.firstName + ' ' + student.lastName}}</p>
+    <p>Godina upisa prvog semestra: {{student.enrolledStudiesAtYear}}</p>
+    <p>Trenutni semestar: {{student.currentSemester}}</p>
+  </div>
+  <app-edit-student *ngIf="editMode" [title]="'Edit student'" [jmbag]="student.jmbag"></app-edit-student>
+  <button class="link-btn mt-5 bg-accent-light p-4 w-full"
+          (click)="editMode = !editMode"
+  >{{editMode ? 'Close edit mode' : 'Edit info'}}</button>
 </ng-container>
 <ng-template #loading>
   <h3>Loading student info...</h3>

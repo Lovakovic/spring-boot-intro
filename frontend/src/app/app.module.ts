@@ -9,7 +9,7 @@ import {MainRoutingModule} from "./main-routing.module";
 import {RouterOutlet} from "@angular/router";
 import {FrontpageComponent} from './pages/frontpage/frontpage.component';
 import {HttpClientModule} from "@angular/common/http";
-import {EditStudentComponent} from './components/new-student/edit-student.component';
+import {EditStudentComponent} from './components/edit-student/edit-student.component';
 
 @NgModule({
   declarations: [
