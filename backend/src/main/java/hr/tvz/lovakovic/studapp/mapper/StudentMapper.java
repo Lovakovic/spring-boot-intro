@@ -6,6 +6,7 @@ import hr.tvz.lovakovic.studapp.model.StudentDTO;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
 public class StudentMapper {
     public static Student fromCommand(StudentCommand studentCommand) {
@@ -22,13 +23,12 @@ public class StudentMapper {
 
     public static StudentDTO toDTO(Student student) {
         StudentDTO studentDTO = new StudentDTO();
-        String fullName = student.getFirstName() + " " + student.getLastName();
-        boolean shouldPayTuition = Period.between(student.getDateOfBirth(), LocalDate.now()).getYears() >= 26;
 
         studentDTO.setJmbag(student.getJmbag());
         studentDTO.setEctsPoints(student.getEctsPoints());
-        studentDTO.setShouldPayTuition(shouldPayTuition);
-        studentDTO.setFullName(fullName);
+        studentDTO.setFirstName(student.getFirstName());
+        studentDTO.setLastName(student.getLastName());
+        studentDTO.setDateOfBirth(student.getDateOfBirth().format(DateTimeFormatter.ISO_DATE));
         studentDTO.setEnrolledStudiesAtYear(student.getEnrolledStudiesAtYear());
         studentDTO.setCurrentSemester(student.getCurrentSemester());
 

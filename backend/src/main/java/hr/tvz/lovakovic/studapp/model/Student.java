@@ -12,10 +12,10 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class Student {
+    private String jmbag;
     private String firstName;
     private String lastName;
     private LocalDate dateOfBirth;
-    private String jmbag;
     private Integer ectsPoints;
     private Integer enrolledStudiesAtYear;
     private Integer currentSemester;

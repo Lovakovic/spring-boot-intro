@@ -5,17 +5,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 public class StudentDTO {
+    private String firstName;
+    private String lastName;
+    private String dateOfBirth;
     private String jmbag;
     private Integer ectsPoints;
-    private Boolean shouldPayTuition;
-
-    // New attributes
-    private String fullName;
     private Integer enrolledStudiesAtYear;
     private Integer currentSemester;
 }
