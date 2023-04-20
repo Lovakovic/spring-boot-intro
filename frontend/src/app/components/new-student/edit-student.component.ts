@@ -12,6 +12,9 @@ export class EditStudentComponent implements OnInit {
   @Input() title! : string;
   addStudentForm: FormGroup;
 
+  notificationMessage: string = '';
+  timeoutId: any;
+
   constructor(
     private formBuilder: FormBuilder,
     private studentService: StudentService
@@ -39,14 +42,26 @@ export class EditStudentComponent implements OnInit {
       };
       this.studentService.postStudent(newStudent).subscribe(
         (response) => {
-          console.log('Student added successfully:', response);
+          this.notificationMessage = 'Student added successfully.';
+          this.clearNotifcationMessage();
         },
         (error) => {
-          console.error('Error adding student:', error);
+          this.notificationMessage = 'Error adding student.';
+          console.log(error);
+          this.clearNotifcationMessage();
         }
       );
     } else {
+      this.notificationMessage = 'Form is invalid.';
       console.warn('Form is invalid');
+      this.clearNotifcationMessage();
     }
+  }
+
+  clearNotifcationMessage(): void {
+    clearTimeout(this.timeoutId);
+    this.timeoutId = setTimeout(() => {
+      this.notificationMessage = '';
+    }, 3000);
   }
 }

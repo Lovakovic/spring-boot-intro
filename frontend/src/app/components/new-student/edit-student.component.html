@@ -27,5 +27,11 @@
       <input id="currentSemester" type="number" formControlName="currentSemester" class="text-black">
     </div>
     <button type="submit" class="submit-btn rounded-md w-full p-3">Submit</button>
+    <p class="text-center mt-2" *ngIf="notificationMessage"
+       [ngClass]="{
+       'text-green-500': notificationMessage === 'Student added successfully.',
+       'text-red-500': notificationMessage !== 'Student added successfully.'
+       }"
+    >{{notificationMessage}}</p>
   </form>
 </div>
