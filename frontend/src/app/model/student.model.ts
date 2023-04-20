@@ -1,10 +1,9 @@
 export default interface Student {
   jmbag: string;
+  firstName: string;
+  lastName: string;
+  dateOfBirth: string | Date;
   ectsPoints: number;
-  shouldPayTuition: boolean;
-
-  // New attributes
-  fullName: string;
   enrolledStudiesAtYear: number;
   currentSemester: number;
 }
