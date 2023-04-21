@@ -51,15 +51,16 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Optional<StudentDTO> putStudent(StudentCommand studentCommand) {
-        Optional<Student> existingStudent = studentRepository.findStudentByJMBAG(studentCommand.getJmbag());
+    public Optional<StudentDTO> putStudent(String jmbag, StudentCommand studentCommand) {
+        Optional<Student> existingStudent = studentRepository.findStudentByJMBAG(jmbag);
 
 
         if (existingStudent.isPresent()) {
             // Update existing student
             Student updatedStudent = StudentMapper.fromCommand(studentCommand);
-            studentRepository.save(updatedStudent);
-            return Optional.empty();
+            updatedStudent.setJmbag(jmbag);
+            studentRepository.replace(jmbag, updatedStudent);
+            return Optional.of(StudentMapper.toDTO(updatedStudent));
         } else {
             // Create new student
             Student newStudent = StudentMapper.fromCommand(studentCommand);

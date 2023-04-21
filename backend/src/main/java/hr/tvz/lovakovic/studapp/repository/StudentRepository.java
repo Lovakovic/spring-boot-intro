@@ -9,4 +9,5 @@ public interface StudentRepository {
     List<Student> findAll();
     Optional<Student> findStudentByJMBAG(String JMBAG);
     Student save(Student student);
+    Student replace(String jmbag, Student newStudent);
 }

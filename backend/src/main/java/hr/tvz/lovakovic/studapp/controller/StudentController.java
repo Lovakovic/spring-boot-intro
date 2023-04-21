@@ -47,17 +47,13 @@ public class StudentController {
         return new ResponseEntity<>(studentDTO, HttpStatus.CREATED);
     }
 
-    @PutMapping
-    public ResponseEntity<StudentDTO> putStudent(@Valid @RequestBody StudentCommand studentCommand) {
-        Optional<StudentDTO> updatedStudent = studentService.putStudent(studentCommand);
+    @PutMapping("/{JMBAG}")
+    public ResponseEntity<StudentDTO> putStudent(@PathVariable String JMBAG,
+                                                 @Valid @RequestBody StudentCommand studentCommand) {
+        Optional<StudentDTO> updatedStudent = studentService.putStudent(JMBAG, studentCommand);
 
-        if (!updatedStudent.isPresent()) {
-            return new ResponseEntity<>(updatedStudent.get(), HttpStatus.CREATED);
-        } else if(updatedStudent.isPresent()) {
-            return new ResponseEntity<>(updatedStudent.get(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        return updatedStudent.map(studentDTO -> new ResponseEntity<>(studentDTO, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.CREATED));
     }
 
     @ExceptionHandler(StudentAlreadyExistsException.class)

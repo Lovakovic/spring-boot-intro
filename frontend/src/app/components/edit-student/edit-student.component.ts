@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {StudentService} from "../../service/student.service";
 import Student from "../../model/student.model";
@@ -12,6 +12,7 @@ export class EditStudentComponent implements OnInit {
   @Input() title! : string;
   addStudentForm: FormGroup;
   @Input() jmbag?: string;
+   @Output() studentUpdated = new EventEmitter<Student>();
 
   // Notification-related
   notificationMessage: string = '';
@@ -48,25 +49,56 @@ export class EditStudentComponent implements OnInit {
       const newStudent: Student = {
         ...this.addStudentForm.value
       };
-      this.studentService.postStudent(newStudent).subscribe(
-        (response) => {
-          this.notificationMessage = 'Student added successfully.';
-          this.clearNotifcationMessage();
-        },
-        (error) => {
-          this.notificationMessage = 'Error adding student.';
-          console.log(error);
-          this.clearNotifcationMessage();
-        }
-      );
+
+      // This is an editing form
+      if(this.jmbag) {
+        this.putStudent(newStudent);
+      }
+      // This is an add new student form
+      else {
+        this.postStudent(newStudent);
+      }
+
     } else {
       this.notificationMessage = 'Form is invalid.';
       console.warn('Form is invalid');
-      this.clearNotifcationMessage();
+      this.clearNotificationMessage();
     }
   }
 
-  clearNotifcationMessage(): void {
+  postStudent(newStudent: Student) {
+    this.studentService.postStudent(newStudent).subscribe(
+      () => {
+        console.log("Student posted successfully.")
+        this.notificationMessage = 'Student added successfully.';
+        this.clearNotificationMessage();
+      },
+      (error) => {
+        this.notificationMessage = 'Error adding student.';
+        console.log(error);
+        this.clearNotificationMessage();
+      }
+    );
+  }
+
+  putStudent(newStudent: Student) {
+    this.studentService.putStudent(newStudent).subscribe(
+      (updatedStudent) => {
+        console.log(updatedStudent)
+        this.addStudentForm.patchValue(updatedStudent);
+        this.studentUpdated.emit(updatedStudent);
+        this.notificationMessage = 'Student added successfully.';
+        this.clearNotificationMessage();
+      },
+      (error) => {
+        this.notificationMessage = 'Error adding student.';
+        console.log(error);
+        this.clearNotificationMessage();
+      }
+    );
+  }
+
+  clearNotificationMessage(): void {
     clearTimeout(this.timeoutId);
     this.timeoutId = setTimeout(() => {
       this.notificationMessage = '';

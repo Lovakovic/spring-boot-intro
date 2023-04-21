@@ -21,6 +21,9 @@ export class DetailsComponent implements OnInit {
     })
   }
 
+  updateStudentInfo(updatedStudent: Student): void {
+    this.student = updatedStudent;
+  }
 
   protected readonly Number = Number;
 }

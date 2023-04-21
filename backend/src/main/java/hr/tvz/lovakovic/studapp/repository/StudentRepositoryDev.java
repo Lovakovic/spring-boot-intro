@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Repository
@@ -47,5 +48,23 @@ public class StudentRepositoryDev implements StudentRepository {
     public Student save(Student student) {
         students.add(student);
         return student;
+    }
+
+    @Override
+    public Student replace(String jmbag, Student newStudent) {
+        int index = -1;
+        for (int i = 0; i < students.size(); i++) {
+            if (students.get(i).getJmbag().equals(jmbag)) {
+                index = i;
+                break;
+            }
+        }
+
+        if (index != -1) {
+            students.set(index, newStudent);
+            return newStudent;
+        } else {
+            throw new NoSuchElementException("No student found with JMBAG: " + jmbag);
+        }
     }
 }

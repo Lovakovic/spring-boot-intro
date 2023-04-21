@@ -23,6 +23,10 @@ export class StudentService {
     return this.http.post<Student>(API_URL, student);
   }
 
+  putStudent(student: Student): Observable<Student> {
+    return this.http.put<Student>(`${API_URL}/${student.jmbag}`, student);
+  }
+
   deleteStudent(jmbag: string) {
     return this.http.delete(`${API_URL}/${jmbag}`);
   }
