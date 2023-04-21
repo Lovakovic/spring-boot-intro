@@ -22,8 +22,7 @@ public class StudentJdbcRepository implements StudentRepository {
     public StudentJdbcRepository(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
         this.simpleJdbcInsert = new SimpleJdbcInsert(dataSource)
-                .withTableName("student")
-                .usingGeneratedKeyColumns("jmbag");
+                .withTableName("student");
     }
 
     private final RowMapper<Student> studentRowMapper = (rs, rowNum) -> {
