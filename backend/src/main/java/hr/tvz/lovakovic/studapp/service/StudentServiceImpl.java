@@ -59,8 +59,7 @@ public class StudentServiceImpl implements StudentService {
             // Update existing student
             Student updatedStudent = StudentMapper.fromCommand(studentCommand);
             updatedStudent.setJmbag(jmbag);
-            studentRepository.replace(jmbag, updatedStudent);
-            return Optional.of(StudentMapper.toDTO(updatedStudent));
+            return Optional.of(StudentMapper.toDTO(studentRepository.replace(jmbag, updatedStudent)));
         } else {
             // Create new student
             Student newStudent = StudentMapper.fromCommand(studentCommand);
