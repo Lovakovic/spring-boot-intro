@@ -1,0 +1,74 @@
+package hr.tvz.lovakovic.studapp.repository;
+
+import hr.tvz.lovakovic.studapp.model.Student;
+import org.springframework.context.annotation.Primary;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.stereotype.Repository;
+
+import javax.sql.DataSource;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+@Repository
+@Primary
+public class StudentJdbcRepository implements StudentRepository {
+    private final JdbcTemplate jdbcTemplate;
+    private final SimpleJdbcInsert simpleJdbcInsert;
+
+    public StudentJdbcRepository(DataSource dataSource) {
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
+        this.simpleJdbcInsert = new SimpleJdbcInsert(dataSource)
+                .withTableName("student")
+                .usingGeneratedKeyColumns("jmbag");
+    }
+
+    private final RowMapper<Student> studentRowMapper = (rs, rowNum) -> {
+        Student student = new Student();
+        student.setJmbag(rs.getString("jmbag"));
+        student.setFirstName(rs.getString("firstName"));
+        student.setLastName(rs.getString("lastName"));
+        student.setDateOfBirth(rs.getDate("dateOfBirth").toLocalDate());
+        student.setEctsPoints(rs.getInt("ectsPoints"));
+        student.setEnrolledStudiesAtYear(rs.getInt("enrolledStudiesAtYear"));
+        student.setCurrentSemester(rs.getInt("currentSemester"));
+        return student;
+    };
+
+    @Override
+    public List<Student> findAll() {
+        String sql = "SELECT * FROM student";
+        return jdbcTemplate.query(sql, studentRowMapper);
+    }
+
+    @Override
+    public Optional<Student> findStudentByJMBAG(String JMBAG) {
+        String sql = "SELECT * FROM student WHERE jmbag = ?";
+        return jdbcTemplate.query(sql, studentRowMapper, JMBAG).stream().findFirst();
+    }
+
+    @Override
+    public Student save(Student student) {
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("jmbag", student.getJmbag());
+        parameters.put("firstName", student.getFirstName());
+        parameters.put("lastName", student.getLastName());
+        parameters.put("dateOfBirth", student.getDateOfBirth());
+        parameters.put("ectsPoints", student.getEctsPoints());
+        parameters.put("enrolledStudiesAtYear", student.getEnrolledStudiesAtYear());
+        parameters.put("currentSemester", student.getCurrentSemester());
+
+        simpleJdbcInsert.execute(parameters);
+        return student;
+    }
+
+    @Override
+    public Student replace(String jmbag, Student newStudent) {
+        String sql = "UPDATE student SET firstName = ?, lastName = ?, dateOfBirth = ?, ectsPoints = ?, enrolledStudiesAtYear = ?, currentSemester = ? WHERE jmbag = ?";
+        jdbcTemplate.update(sql, newStudent.getFirstName(), newStudent.getLastName(), newStudent.getDateOfBirth(), newStudent.getEctsPoints(), newStudent.getEnrolledStudiesAtYear(), newStudent.getCurrentSemester(), jmbag);
+        return newStudent;
+    }
+}
