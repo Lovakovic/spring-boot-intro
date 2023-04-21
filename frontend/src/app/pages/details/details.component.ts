@@ -23,6 +23,7 @@ export class DetailsComponent implements OnInit {
 
   updateStudentInfo(updatedStudent: Student): void {
     this.student = updatedStudent;
+    this.editMode = false;
   }
 
   protected readonly Number = Number;
