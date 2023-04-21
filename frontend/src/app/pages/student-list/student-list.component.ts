@@ -16,6 +16,10 @@ export class StudentListComponent implements OnInit {
   constructor(public studentService: StudentService) {}
 
   ngOnInit(): void {
+    this.fetchStudents();
+  }
+
+  fetchStudents():void {
     this.studentService.getStudents().subscribe((_students) => {
       this.students = _students;
       this.displayStudents = [...this.students];

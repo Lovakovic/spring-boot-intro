@@ -69,7 +69,8 @@ export class EditStudentComponent implements OnInit {
   postStudent(newStudent: Student) {
     this.studentService.postStudent(newStudent).subscribe(
       () => {
-        console.log("Student posted successfully.")
+        this.addStudentForm.reset();
+        this.studentUpdated.emit(newStudent);
         this.notificationMessage = 'Student added successfully.';
         this.clearNotificationMessage();
       },
@@ -84,7 +85,6 @@ export class EditStudentComponent implements OnInit {
   putStudent(newStudent: Student) {
     this.studentService.putStudent(newStudent).subscribe(
       (updatedStudent) => {
-        console.log(updatedStudent)
         this.addStudentForm.patchValue(updatedStudent);
         this.studentUpdated.emit(updatedStudent);
         this.notificationMessage = 'Student added successfully.';
