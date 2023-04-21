@@ -67,4 +67,9 @@ public class StudentRepositoryDev implements StudentRepository {
             throw new NoSuchElementException("No student found with JMBAG: " + jmbag);
         }
     }
+
+    @Override
+    public void deleteByJmbag(String jmbag) {
+        students.removeIf(student -> student.getJmbag().equals(jmbag));
+    }
 }

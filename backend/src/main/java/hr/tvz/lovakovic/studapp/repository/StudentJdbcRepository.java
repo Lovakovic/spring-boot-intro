@@ -71,4 +71,10 @@ public class StudentJdbcRepository implements StudentRepository {
         jdbcTemplate.update(sql, newStudent.getFirstName(), newStudent.getLastName(), newStudent.getDateOfBirth(), newStudent.getEctsPoints(), newStudent.getEnrolledStudiesAtYear(), newStudent.getCurrentSemester(), jmbag);
         return newStudent;
     }
+
+    @Override
+    public void deleteByJmbag(String jmbag) {
+        String sql = "DELETE FROM student WHERE jmbag = ?";
+        jdbcTemplate.update(sql, jmbag);
+    }
 }
