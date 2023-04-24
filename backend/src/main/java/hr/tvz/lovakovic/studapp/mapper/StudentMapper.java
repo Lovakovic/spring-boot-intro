@@ -1,6 +1,6 @@
 package hr.tvz.lovakovic.studapp.mapper;
 
-import hr.tvz.lovakovic.studapp.model.NewStudentDTO;
+import hr.tvz.lovakovic.studapp.model.DetailedStudentDTO;
 import hr.tvz.lovakovic.studapp.model.Student;
 import hr.tvz.lovakovic.studapp.model.StudentCommand;
 import hr.tvz.lovakovic.studapp.model.StudentDTO;
@@ -37,20 +37,20 @@ public class StudentMapper {
         return studentDTO;
     }
 
-    public static NewStudentDTO toNewDTO(Student student) {
-        NewStudentDTO newStudentDTO = new NewStudentDTO();
+    public static DetailedStudentDTO toDetailDTO(Student student) {
+        DetailedStudentDTO detailedStudentDTO = new DetailedStudentDTO();
 
-        newStudentDTO.setJmbag(student.getJmbag());
-        newStudentDTO.setEctsPoints(student.getEctsPoints());
-        newStudentDTO.setFirstName(student.getFirstName());
-        newStudentDTO.setLastName(student.getLastName());
-        newStudentDTO.setDateOfBirth(student.getDateOfBirth().format(DateTimeFormatter.ISO_DATE));
-        newStudentDTO.setEnrolledStudiesAtYear(student.getEnrolledStudiesAtYear());
-        newStudentDTO.setCurrentSemester(student.getCurrentSemester());
-        newStudentDTO.setEmail(student.getEmail());
-        newStudentDTO.setPhone(student.getPhone());
-        newStudentDTO.setMajor(student.getMajor());
+        detailedStudentDTO.setJmbag(student.getJmbag());
+        detailedStudentDTO.setEctsPoints(student.getEctsPoints());
+        detailedStudentDTO.setFirstName(student.getFirstName());
+        detailedStudentDTO.setLastName(student.getLastName());
+        detailedStudentDTO.setDateOfBirth(student.getDateOfBirth().format(DateTimeFormatter.ISO_DATE));
+        detailedStudentDTO.setEnrolledStudiesAtYear(student.getEnrolledStudiesAtYear());
+        detailedStudentDTO.setCurrentSemester(student.getCurrentSemester());
+        detailedStudentDTO.setEmail(student.getEmail());
+        detailedStudentDTO.setPhone(student.getPhone());
+        detailedStudentDTO.setMajor(student.getMajor());
 
-        return newStudentDTO;
+        return detailedStudentDTO;
     }
 }

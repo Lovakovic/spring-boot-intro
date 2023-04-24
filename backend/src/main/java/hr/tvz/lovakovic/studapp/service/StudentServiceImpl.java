@@ -99,6 +99,6 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public DetailedStudentDTO convertToDetailedStudentDTO(Student student) {
-        return StudentMapper.toNewDTO(student);
+        return StudentMapper.toDetailDTO(student);
     }
 }
