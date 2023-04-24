@@ -34,6 +34,9 @@ public class StudentJdbcRepository implements StudentRepository {
         student.setEctsPoints(rs.getInt("ectsPoints"));
         student.setEnrolledStudiesAtYear(rs.getInt("enrolledStudiesAtYear"));
         student.setCurrentSemester(rs.getInt("currentSemester"));
+        student.setEmail(rs.getString("email"));
+        student.setPhone(rs.getString("phone"));
+        student.setMajor(rs.getString("major"));
         return student;
     };
 
@@ -59,6 +62,9 @@ public class StudentJdbcRepository implements StudentRepository {
         parameters.put("ectsPoints", student.getEctsPoints());
         parameters.put("enrolledStudiesAtYear", student.getEnrolledStudiesAtYear());
         parameters.put("currentSemester", student.getCurrentSemester());
+        parameters.put("email", student.getEmail());
+        parameters.put("phone", student.getPhone());
+        parameters.put("major", student.getMajor());
 
         simpleJdbcInsert.execute(parameters);
         return student;

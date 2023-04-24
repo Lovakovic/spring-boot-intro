@@ -37,4 +37,13 @@ public class StudentCommand {
 
     @NotNull(message = "Current semester must not be empty")
     private Integer currentSemester;
+
+    @NotBlank(message = "Email must not be empty")
+    private String email;
+
+    @NotBlank(message = "Phone number must not be empty")
+    private String phone;
+
+    @NotBlank(message = "Major must not be empty")
+    private String major;
 }

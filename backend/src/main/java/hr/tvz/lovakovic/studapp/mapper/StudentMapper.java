@@ -15,7 +15,10 @@ public class StudentMapper {
                 studentCommand.getDateOfBirth(),
                 studentCommand.getEctsPoints(),
                 studentCommand.getEnrolledStudiesAtYear(),
-                studentCommand.getCurrentSemester()
+                studentCommand.getCurrentSemester(),
+                studentCommand.getEmail(),
+                studentCommand.getPhone(),
+                studentCommand.getMajor()
         );
     }
 

@@ -19,4 +19,7 @@ public class Student {
     private Integer ectsPoints;
     private Integer enrolledStudiesAtYear;
     private Integer currentSemester;
+    private String email;
+    private String phone;
+    private String major;
 }
