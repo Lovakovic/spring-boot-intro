@@ -13,14 +13,14 @@ export class StudentService {
 
   getStudents(detailed: boolean = false): Observable<Student[]> {
     if(detailed)
-      return this.http.get<Student[]>(`${API_URL}/new`);
+      return this.http.get<Student[]>(`${API_URL}/detail`);
 
     return this.http.get<Student[]>(`${API_URL}`);
   }
 
   getStudentByJmbag(jmbag: string, detailed: boolean = true): Observable<Student> {
     if(detailed)
-      return this.http.get<Student>(`${API_URL}/new/${jmbag}`);
+      return this.http.get<Student>(`${API_URL}/detail/${jmbag}`);
 
     return this.http.get<Student>(`${API_URL}/${jmbag}`);
   }
