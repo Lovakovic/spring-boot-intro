@@ -11,11 +11,17 @@ const API_URL = `http://localhost:8080/api/students`;
 export class StudentService {
   constructor(private http: HttpClient) {}
 
-  getStudents(): Observable<Student[]> {
-    return this.http.get<Student[]>(API_URL);
+  getStudents(detailed: boolean = false): Observable<Student[]> {
+    if(detailed)
+      return this.http.get<Student[]>(`${API_URL}/new`);
+
+    return this.http.get<Student[]>(`${API_URL}`);
   }
 
-  getStudentByJmbag(jmbag: string): Observable<Student> {
+  getStudentByJmbag(jmbag: string, detailed: boolean = true): Observable<Student> {
+    if(detailed)
+      return this.http.get<Student>(`${API_URL}/new/${jmbag}`);
+
     return this.http.get<Student>(`${API_URL}/${jmbag}`);
   }
 
