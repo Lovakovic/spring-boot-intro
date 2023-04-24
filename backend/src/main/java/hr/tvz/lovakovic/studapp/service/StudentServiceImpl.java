@@ -2,6 +2,7 @@ package hr.tvz.lovakovic.studapp.service;
 
 import hr.tvz.lovakovic.studapp.exception.StudentAlreadyExistsException;
 import hr.tvz.lovakovic.studapp.mapper.StudentMapper;
+import hr.tvz.lovakovic.studapp.model.DetailedStudentDTO;
 import hr.tvz.lovakovic.studapp.model.Student;
 import hr.tvz.lovakovic.studapp.model.StudentCommand;
 import hr.tvz.lovakovic.studapp.model.StudentDTO;
@@ -12,8 +13,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-import static hr.tvz.lovakovic.studapp.repository.StudentRepositoryDev.students;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -33,9 +32,23 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public List<DetailedStudentDTO> findAllDetailed() {
+        return studentRepository.findAll().stream()
+                .map(this::convertToDetailedStudentDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public StudentDTO findStudentByJMBAG(String JMBAG) {
         return studentRepository.findStudentByJMBAG(JMBAG)
                 .map(this::convertToStudentDTO)
+                .orElse(null);
+    }
+
+    @Override
+    public DetailedStudentDTO findDetailedStudentByJMBAG(String JMBAG) {
+        return studentRepository.findStudentByJMBAG(JMBAG)
+                .map(this::convertToDetailedStudentDTO)
                 .orElse(null);
     }
 
@@ -82,5 +95,10 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public StudentDTO convertToStudentDTO(Student student) {
         return StudentMapper.toDTO(student);
+    }
+
+    @Override
+    public DetailedStudentDTO convertToDetailedStudentDTO(Student student) {
+        return StudentMapper.toNewDTO(student);
     }
 }
