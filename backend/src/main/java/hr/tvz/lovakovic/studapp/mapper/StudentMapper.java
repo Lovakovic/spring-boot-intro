@@ -1,6 +1,6 @@
 package hr.tvz.lovakovic.studapp.mapper;
 
-import hr.tvz.lovakovic.studapp.model.DetailedStudentDTO;
+import hr.tvz.lovakovic.studapp.model.DetailStudentDTO;
 import hr.tvz.lovakovic.studapp.model.Student;
 import hr.tvz.lovakovic.studapp.model.StudentCommand;
 import hr.tvz.lovakovic.studapp.model.StudentDTO;
@@ -37,20 +37,20 @@ public class StudentMapper {
         return studentDTO;
     }
 
-    public static DetailedStudentDTO toDetailDTO(Student student) {
-        DetailedStudentDTO detailedStudentDTO = new DetailedStudentDTO();
+    public static DetailStudentDTO toDetailDTO(Student student) {
+        DetailStudentDTO detailStudentDTO = new DetailStudentDTO();
 
-        detailedStudentDTO.setJmbag(student.getJmbag());
-        detailedStudentDTO.setEctsPoints(student.getEctsPoints());
-        detailedStudentDTO.setFirstName(student.getFirstName());
-        detailedStudentDTO.setLastName(student.getLastName());
-        detailedStudentDTO.setDateOfBirth(student.getDateOfBirth().format(DateTimeFormatter.ISO_DATE));
-        detailedStudentDTO.setEnrolledStudiesAtYear(student.getEnrolledStudiesAtYear());
-        detailedStudentDTO.setCurrentSemester(student.getCurrentSemester());
-        detailedStudentDTO.setEmail(student.getEmail());
-        detailedStudentDTO.setPhone(student.getPhone());
-        detailedStudentDTO.setMajor(student.getMajor());
+        detailStudentDTO.setJmbag(student.getJmbag());
+        detailStudentDTO.setEctsPoints(student.getEctsPoints());
+        detailStudentDTO.setFirstName(student.getFirstName());
+        detailStudentDTO.setLastName(student.getLastName());
+        detailStudentDTO.setDateOfBirth(student.getDateOfBirth().format(DateTimeFormatter.ISO_DATE));
+        detailStudentDTO.setEnrolledStudiesAtYear(student.getEnrolledStudiesAtYear());
+        detailStudentDTO.setCurrentSemester(student.getCurrentSemester());
+        detailStudentDTO.setEmail(student.getEmail());
+        detailStudentDTO.setPhone(student.getPhone());
+        detailStudentDTO.setMajor(student.getMajor());
 
-        return detailedStudentDTO;
+        return detailStudentDTO;
     }
 }

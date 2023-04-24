@@ -3,7 +3,7 @@ package hr.tvz.lovakovic.studapp.model;
 import lombok.Data;
 
 @Data
-public class DetailedStudentDTO {
+public class DetailStudentDTO {
     private String jmbag;
     private String firstName;
     private String lastName;

@@ -1,7 +1,7 @@
 package hr.tvz.lovakovic.studapp.controller;
 
 import hr.tvz.lovakovic.studapp.exception.StudentAlreadyExistsException;
-import hr.tvz.lovakovic.studapp.model.DetailedStudentDTO;
+import hr.tvz.lovakovic.studapp.model.DetailStudentDTO;
 import hr.tvz.lovakovic.studapp.model.StudentCommand;
 import hr.tvz.lovakovic.studapp.model.StudentDTO;
 import hr.tvz.lovakovic.studapp.service.StudentService;
@@ -32,7 +32,7 @@ public class StudentController {
     }
 
     @GetMapping("/detail")
-    public List<DetailedStudentDTO> getAllDetailedStudents() { return studentService.findAllDetailed(); };
+    public List<DetailStudentDTO> getAllDetailStudents() { return studentService.findAllDetail(); };
 
     @GetMapping("/{JMBAG}")
     public ResponseEntity<StudentDTO> getStudentByJMBAG(@PathVariable String JMBAG) {
@@ -45,10 +45,10 @@ public class StudentController {
     }
 
     @GetMapping("/detail/{JMBAG}")
-    public ResponseEntity<DetailedStudentDTO> getDetailedStudentByJMBAG(@PathVariable String JMBAG) {
-        DetailedStudentDTO detailedStudentDTO = studentService.findDetailedStudentByJMBAG(JMBAG);
-        if (detailedStudentDTO != null) {
-            return ResponseEntity.ok(detailedStudentDTO);
+    public ResponseEntity<DetailStudentDTO> getDetailStudentByJMBAG(@PathVariable String JMBAG) {
+        DetailStudentDTO detailStudentDTO = studentService.findDetailStudentByJMBAG(JMBAG);
+        if (detailStudentDTO != null) {
+            return ResponseEntity.ok(detailStudentDTO);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }

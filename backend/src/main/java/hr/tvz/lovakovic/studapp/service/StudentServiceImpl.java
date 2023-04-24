@@ -2,7 +2,7 @@ package hr.tvz.lovakovic.studapp.service;
 
 import hr.tvz.lovakovic.studapp.exception.StudentAlreadyExistsException;
 import hr.tvz.lovakovic.studapp.mapper.StudentMapper;
-import hr.tvz.lovakovic.studapp.model.DetailedStudentDTO;
+import hr.tvz.lovakovic.studapp.model.DetailStudentDTO;
 import hr.tvz.lovakovic.studapp.model.Student;
 import hr.tvz.lovakovic.studapp.model.StudentCommand;
 import hr.tvz.lovakovic.studapp.model.StudentDTO;
@@ -32,9 +32,9 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<DetailedStudentDTO> findAllDetailed() {
+    public List<DetailStudentDTO> findAllDetail() {
         return studentRepository.findAll().stream()
-                .map(this::convertToDetailedStudentDTO)
+                .map(this::convertToDetailStudentDTO)
                 .collect(Collectors.toList());
     }
 
@@ -46,9 +46,9 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public DetailedStudentDTO findDetailedStudentByJMBAG(String JMBAG) {
+    public DetailStudentDTO findDetailStudentByJMBAG(String JMBAG) {
         return studentRepository.findStudentByJMBAG(JMBAG)
-                .map(this::convertToDetailedStudentDTO)
+                .map(this::convertToDetailStudentDTO)
                 .orElse(null);
     }
 
@@ -98,7 +98,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public DetailedStudentDTO convertToDetailedStudentDTO(Student student) {
+    public DetailStudentDTO convertToDetailStudentDTO(Student student) {
         return StudentMapper.toDetailDTO(student);
     }
 }
