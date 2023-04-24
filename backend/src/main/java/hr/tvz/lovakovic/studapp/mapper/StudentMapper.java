@@ -1,5 +1,6 @@
 package hr.tvz.lovakovic.studapp.mapper;
 
+import hr.tvz.lovakovic.studapp.model.NewStudentDTO;
 import hr.tvz.lovakovic.studapp.model.Student;
 import hr.tvz.lovakovic.studapp.model.StudentCommand;
 import hr.tvz.lovakovic.studapp.model.StudentDTO;
@@ -34,5 +35,22 @@ public class StudentMapper {
         studentDTO.setCurrentSemester(student.getCurrentSemester());
 
         return studentDTO;
+    }
+
+    public static NewStudentDTO toNewDTO(Student student) {
+        NewStudentDTO newStudentDTO = new NewStudentDTO();
+
+        newStudentDTO.setJmbag(student.getJmbag());
+        newStudentDTO.setEctsPoints(student.getEctsPoints());
+        newStudentDTO.setFirstName(student.getFirstName());
+        newStudentDTO.setLastName(student.getLastName());
+        newStudentDTO.setDateOfBirth(student.getDateOfBirth().format(DateTimeFormatter.ISO_DATE));
+        newStudentDTO.setEnrolledStudiesAtYear(student.getEnrolledStudiesAtYear());
+        newStudentDTO.setCurrentSemester(student.getCurrentSemester());
+        newStudentDTO.setEmail(student.getEmail());
+        newStudentDTO.setPhone(student.getPhone());
+        newStudentDTO.setMajor(student.getMajor());
+
+        return newStudentDTO;
     }
 }
