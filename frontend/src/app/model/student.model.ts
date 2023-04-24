@@ -6,4 +6,7 @@ export default interface Student {
   ectsPoints: number;
   enrolledStudiesAtYear: number;
   currentSemester: number;
+  email: string;
+  phone: string;
+  major: string;
 }
