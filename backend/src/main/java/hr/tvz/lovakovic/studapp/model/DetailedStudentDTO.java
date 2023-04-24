@@ -2,10 +2,8 @@ package hr.tvz.lovakovic.studapp.model;
 
 import lombok.Data;
 
-import java.time.LocalDate;
-
 @Data
-public class NewStudentDTO {
+public class DetailedStudentDTO {
     private String jmbag;
     private String firstName;
     private String lastName;
