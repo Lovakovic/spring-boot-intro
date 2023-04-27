@@ -70,7 +70,7 @@ public class StudentRepositoryDev implements StudentRepository {
     }
 
     @Override
-    public void deleteByJmbag(String jmbag) {
-        students.removeIf(student -> student.getJmbag().equals(jmbag));
+    public Boolean deleteByJmbag(String jmbag) {
+        return students.removeIf(student -> student.getJmbag().equals(jmbag));
     }
 }

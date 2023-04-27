@@ -10,5 +10,5 @@ public interface StudentRepository {
     Optional<Student> findStudentByJMBAG(String JMBAG);
     Student save(Student student);
     Student replace(String jmbag, Student newStudent);
-    void deleteByJmbag(String jmbag);
+    Boolean deleteByJmbag(String jmbag);
 }

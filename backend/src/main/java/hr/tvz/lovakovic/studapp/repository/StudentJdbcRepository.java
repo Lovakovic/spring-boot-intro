@@ -78,8 +78,10 @@ public class StudentJdbcRepository implements StudentRepository {
     }
 
     @Override
-    public void deleteByJmbag(String jmbag) {
+    public Boolean deleteByJmbag(String jmbag) {
         String sql = "DELETE FROM student WHERE jmbag = ?";
-        jdbcTemplate.update(sql, jmbag);
+        int affectedRows = jdbcTemplate.update(sql, jmbag);
+
+        return affectedRows > 0;
     }
 }

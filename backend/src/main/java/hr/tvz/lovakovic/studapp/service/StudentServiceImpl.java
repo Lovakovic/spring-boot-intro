@@ -83,13 +83,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Boolean deleteStudentByJMBAG(String jmbag) {
-        Optional<Student> studentToDelete = studentRepository.findStudentByJMBAG(jmbag);
-        if (studentToDelete.isPresent()) {
-            studentRepository.deleteByJmbag(jmbag);
-            return true;
-        } else {
-            return false;
-        }
+        return studentRepository.deleteByJmbag(jmbag);
     }
 
     @Override
