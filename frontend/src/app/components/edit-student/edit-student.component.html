@@ -30,6 +30,18 @@
       <label for="currentSemester">Current Semester:</label>
       <input id="currentSemester" type="number" formControlName="currentSemester" class="text-black">
     </div>
+    <div class="flex justify-between mb-3">
+      <label for="email">Email:</label>
+      <input id="email" type="email" formControlName="email" class="text-black">
+    </div>
+    <div class="flex justify-between mb-3">
+      <label for="phone">Phone:</label>
+      <input id="phone" type="tel" formControlName="phone" class="text-black">
+    </div>
+    <div class="flex justify-between mb-3">
+      <label for="major">Major:</label>
+      <input id="major" type="text" formControlName="major" class="text-black">
+    </div>
     <button type="submit" class="submit-btn rounded-md w-full p-3">Submit</button>
     <p class="text-center mt-2" *ngIf="notificationMessage"
        [ngClass]="{

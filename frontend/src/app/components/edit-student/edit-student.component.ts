@@ -33,6 +33,9 @@ export class EditStudentComponent implements OnInit {
       ectsPoints: ['', Validators.required],
       enrolledStudiesAtYear: ['', Validators.required],
       currentSemester: ['', Validators.required],
+      email: ['', Validators.required],
+      phone: ['', Validators.required],
+      major: ['', Validators.required],
     });
   }
 
@@ -50,7 +53,7 @@ export class EditStudentComponent implements OnInit {
         ...this.addStudentForm.value
       };
 
-      // This is an editing form
+      // Jmbag exists, this is an editing form
       if(this.jmbag) {
         this.putStudent(newStudent);
       }
