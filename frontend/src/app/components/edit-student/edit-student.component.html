@@ -3,16 +3,16 @@
   <hr class="mt-2">
   <form [formGroup]="addStudentForm" (ngSubmit)="onSubmit()" class="py-4">
     <div class="flex justify-between mb-3">
+      <label for="jmbag">JMBAG:</label>
+      <input id="jmbag" type="text" formControlName="jmbag" class="text-black">
+    </div>
+    <div class="flex justify-between mb-3">
       <label for="firstName">First Name:</label>
       <input id="firstName" type="text" formControlName="firstName" class="text-black">
     </div>
     <div class="flex justify-between mb-3">
       <label for="lastName">Last Name:</label>
       <input id="lastName" type="text" formControlName="lastName" class="text-black">
-    </div>
-    <div class="flex justify-between mb-3">
-      <label for="jmbag">JMBAG:</label>
-      <input id="jmbag" type="text" formControlName="jmbag" class="text-black">
     </div>
     <div class="flex justify-between mb-3">
       <label for="dateOfBirth">Date of Birth:</label>

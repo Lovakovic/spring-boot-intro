@@ -43,6 +43,7 @@ export class EditStudentComponent implements OnInit {
     if(this.jmbag) {
       this.studentService.getStudentByJmbag(this.jmbag).subscribe(student => {
         this.addStudentForm.patchValue(student);
+        this.addStudentForm.get('jmbag')?.disable();
       })
     }
   }
