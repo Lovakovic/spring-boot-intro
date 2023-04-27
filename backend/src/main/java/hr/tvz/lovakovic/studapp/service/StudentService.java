@@ -13,8 +13,8 @@ public interface StudentService {
     List<DetailStudentDTO> findAllDetail();
     StudentDTO findStudentByJMBAG(String JMBAG);
     DetailStudentDTO findDetailStudentByJMBAG(String JMBAG);
-    StudentDTO addStudent(StudentCommand studentCommand);
-    Optional<StudentDTO> putStudent(String jmbag, StudentCommand studentCommand);
+    DetailStudentDTO addStudent(StudentCommand studentCommand);
+    Optional<DetailStudentDTO> putStudent(String jmbag, StudentCommand studentCommand);
     Boolean deleteStudentByJMBAG(String JMBAG);
     StudentDTO convertToStudentDTO(Student student);
     DetailStudentDTO convertToDetailStudentDTO(Student student);

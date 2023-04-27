@@ -53,18 +53,18 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public StudentDTO addStudent(StudentCommand studentCommand) {
+    public DetailStudentDTO addStudent(StudentCommand studentCommand) {
         // Check if the student already exists
         if (studentRepository.findStudentByJMBAG(studentCommand.getJmbag()).isPresent()) {
             throw new StudentAlreadyExistsException("A student with the given JMBAG already exists.");
         }
 
         Student savedStudent = studentRepository.save(StudentMapper.fromCommand(studentCommand));
-        return StudentMapper.toDTO(savedStudent);
+        return convertToDetailStudentDTO(savedStudent);
     }
 
     @Override
-    public Optional<StudentDTO> putStudent(String jmbag, StudentCommand studentCommand) {
+    public Optional<DetailStudentDTO> putStudent(String jmbag, StudentCommand studentCommand) {
         Optional<Student> existingStudent = studentRepository.findStudentByJMBAG(jmbag);
 
 
@@ -72,12 +72,12 @@ public class StudentServiceImpl implements StudentService {
             // Update existing student
             Student updatedStudent = StudentMapper.fromCommand(studentCommand);
             updatedStudent.setJmbag(jmbag);
-            return Optional.of(StudentMapper.toDTO(studentRepository.replace(jmbag, updatedStudent)));
+            return Optional.of(convertToDetailStudentDTO(studentRepository.replace(jmbag, updatedStudent)));
         } else {
             // Create new student
             Student newStudent = StudentMapper.fromCommand(studentCommand);
             Student savedStudent = studentRepository.save(newStudent);
-            return Optional.of(StudentMapper.toDTO(savedStudent));
+            return Optional.of(convertToDetailStudentDTO(savedStudent));
         }
     }
 

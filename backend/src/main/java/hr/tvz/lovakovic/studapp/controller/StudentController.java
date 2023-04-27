@@ -55,17 +55,17 @@ public class StudentController {
     }
 
     @PostMapping
-    public ResponseEntity<StudentDTO> addStudent(@Valid @RequestBody StudentCommand studentCommand) {
-        StudentDTO studentDTO = studentService.addStudent(studentCommand);
-        return new ResponseEntity<>(studentDTO, HttpStatus.CREATED);
+    public ResponseEntity<DetailStudentDTO> addStudent(@Valid @RequestBody StudentCommand studentCommand) {
+        DetailStudentDTO detailStudentDTO = studentService.addStudent(studentCommand);
+        return new ResponseEntity<>(detailStudentDTO, HttpStatus.CREATED);
     }
 
     @PutMapping("/{JMBAG}")
-    public ResponseEntity<StudentDTO> putStudent(@PathVariable String JMBAG,
+    public ResponseEntity<DetailStudentDTO> putStudent(@PathVariable String JMBAG,
                                                  @Valid @RequestBody StudentCommand studentCommand) {
-        Optional<StudentDTO> updatedStudent = studentService.putStudent(JMBAG, studentCommand);
+        Optional<DetailStudentDTO> updatedStudent = studentService.putStudent(JMBAG, studentCommand);
 
-        return updatedStudent.map(studentDTO -> new ResponseEntity<>(studentDTO, HttpStatus.OK))
+        return updatedStudent.map(detailStudentDTO -> new ResponseEntity<>(detailStudentDTO, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.CREATED));
     }
 
