@@ -72,8 +72,20 @@ public class StudentJdbcRepository implements StudentRepository {
 
     @Override
     public Student replace(String jmbag, Student newStudent) {
-        String sql = "UPDATE student SET firstName = ?, lastName = ?, dateOfBirth = ?, ectsPoints = ?, enrolledStudiesAtYear = ?, currentSemester = ? WHERE jmbag = ?";
-        jdbcTemplate.update(sql, newStudent.getFirstName(), newStudent.getLastName(), newStudent.getDateOfBirth(), newStudent.getEctsPoints(), newStudent.getEnrolledStudiesAtYear(), newStudent.getCurrentSemester(), jmbag);
+        String sql = "UPDATE student SET firstName = ?, lastName = ?, dateOfBirth = ?, ectsPoints = ?, " +
+                "enrolledStudiesAtYear = ?, currentSemester = ?, email = ?, phone = ?, major = ? WHERE jmbag = ?";
+
+        jdbcTemplate.update(sql,
+                newStudent.getFirstName(),
+                newStudent.getLastName(),
+                newStudent.getDateOfBirth(),
+                newStudent.getEctsPoints(),
+                newStudent.getEnrolledStudiesAtYear(),
+                newStudent.getCurrentSemester(),
+                newStudent.getEmail(),
+                newStudent.getPhone(),
+                newStudent.getMajor(),
+                jmbag);
         return newStudent;
     }
 
