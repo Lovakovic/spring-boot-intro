@@ -32,7 +32,7 @@ public class StudentController {
     }
 
     @GetMapping("/detail")
-    public List<DetailStudentDTO> getAllDetailStudents() { return studentService.findAllDetail(); };
+    public List<DetailStudentDTO> getAllDetailStudents() { return studentService.findAllDetail(); }
 
     @GetMapping("/{JMBAG}")
     public ResponseEntity<StudentDTO> getStudentByJMBAG(@PathVariable String JMBAG) {
