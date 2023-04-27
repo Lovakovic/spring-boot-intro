@@ -8,6 +8,7 @@ import hr.tvz.lovakovic.studapp.model.StudentCommand;
 import hr.tvz.lovakovic.studapp.model.StudentDTO;
 import hr.tvz.lovakovic.studapp.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -64,20 +65,19 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Optional<DetailStudentDTO> putStudent(String jmbag, StudentCommand studentCommand) {
+    public Pair<Boolean, DetailStudentDTO> putStudent(String jmbag, StudentCommand studentCommand) {
         Optional<Student> existingStudent = studentRepository.findStudentByJMBAG(jmbag);
-
 
         if (existingStudent.isPresent()) {
             // Update existing student
             Student updatedStudent = StudentMapper.fromCommand(studentCommand);
             updatedStudent.setJmbag(jmbag);
-            return Optional.of(convertToDetailStudentDTO(studentRepository.replace(jmbag, updatedStudent)));
+            return Pair.of(false, convertToDetailStudentDTO(studentRepository.replace(jmbag, updatedStudent)));
         } else {
             // Create new student
             Student newStudent = StudentMapper.fromCommand(studentCommand);
             Student savedStudent = studentRepository.save(newStudent);
-            return Optional.of(convertToDetailStudentDTO(savedStudent));
+            return Pair.of(true, convertToDetailStudentDTO(savedStudent));
         }
     }
 

@@ -7,12 +7,12 @@ import hr.tvz.lovakovic.studapp.model.StudentDTO;
 import hr.tvz.lovakovic.studapp.service.StudentService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.util.Pair;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/students")
@@ -63,10 +63,15 @@ public class StudentController {
     @PutMapping("/{JMBAG}")
     public ResponseEntity<DetailStudentDTO> putStudent(@PathVariable String JMBAG,
                                                  @Valid @RequestBody StudentCommand studentCommand) {
-        Optional<DetailStudentDTO> updatedStudent = studentService.putStudent(JMBAG, studentCommand);
+        Pair<Boolean, DetailStudentDTO> result = studentService.putStudent(JMBAG, studentCommand);
+        Boolean isCreated = result.getFirst();
+        DetailStudentDTO updatedStudent = result.getSecond();
 
-        return updatedStudent.map(detailStudentDTO -> new ResponseEntity<>(detailStudentDTO, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.CREATED));
+        if (isCreated) {
+            return new ResponseEntity<>(updatedStudent, HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(updatedStudent, HttpStatus.OK);
+        }
     }
 
     @ExceptionHandler(StudentAlreadyExistsException.class)
