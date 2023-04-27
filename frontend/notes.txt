@@ -1,2 +1,0 @@
-Todo
-- display all info in every case on student details page
