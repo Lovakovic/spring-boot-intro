@@ -1,16 +1,16 @@
 <a [routerLink]="['/list']" class="link-btn bg-accent-dark inline-block w-auto p-4 my-4">Back to the list</a>
 <ng-container *ngIf="student else loading">
   <div *ngIf="!editMode">
-    <h3 class="font-bold text-xl">{{student.jmbag}} - detalji studenta</h3>
+    <h3 class="font-bold text-xl">{{student.jmbag}} - student details</h3>
     <hr class="my-3">
     <p>JMBAG: {{student.jmbag}}</p>
-    <p>Broj ECTS bodova: {{student.ectsPoints}}</p>
-    <p>Ime i prezime: {{student.firstName + ' ' + student.lastName}}</p>
-    <p>Godina upisa prvog semestra: {{student.enrolledStudiesAtYear}}</p>
-    <p>Trenutni semestar: {{student.currentSemester}}</p>
+    <p>Number of ECTS points: {{student.ectsPoints}}</p>
+    <p>Full name: {{student.firstName + ' ' + student.lastName}}</p>
+    <p>Year of enrollment: {{student.enrolledStudiesAtYear}}</p>
+    <p>Current semester: {{student.currentSemester}}</p>
     <p>Email: {{student.email}}</p>
-    <p>Broj mobitela: {{student.phone}}</p>
-    <p>Studij: {{student.major}}</p>
+    <p>Phone: {{student.phone}}</p>
+    <p>Major: {{student.major}}</p>
   </div>
   <app-edit-student *ngIf="editMode"
                     [title]="'Edit student'"
