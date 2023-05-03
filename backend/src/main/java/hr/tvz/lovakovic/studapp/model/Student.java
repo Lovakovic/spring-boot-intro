@@ -30,9 +30,9 @@ public class Student implements Serializable {
     private String major;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "student_courses",
+    @JoinTable(name = "student_course",
             joinColumns = @JoinColumn(name = "student_jmbag"),
-            inverseJoinColumns = @JoinColumn(name = "student_id")
+            inverseJoinColumns = @JoinColumn(name = "course_id")
     )
     private Set<Course> courses;
 }
