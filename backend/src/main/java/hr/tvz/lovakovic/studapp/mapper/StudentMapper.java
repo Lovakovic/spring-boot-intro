@@ -9,18 +9,18 @@ import java.time.format.DateTimeFormatter;
 
 public class StudentMapper {
     public static Student fromCommand(StudentCommand studentCommand) {
-        return new Student(
-                studentCommand.getJmbag(),
-                studentCommand.getFirstName(),
-                studentCommand.getLastName(),
-                studentCommand.getDateOfBirth(),
-                studentCommand.getEctsPoints(),
-                studentCommand.getEnrolledStudiesAtYear(),
-                studentCommand.getCurrentSemester(),
-                studentCommand.getEmail(),
-                studentCommand.getPhone(),
-                studentCommand.getMajor()
-        );
+        return Student.builder()
+                .jmbag(studentCommand.getJmbag())
+                .firstName(studentCommand.getFirstName())
+                .lastName(studentCommand.getLastName())
+                .dateOfBirth(studentCommand.getDateOfBirth())
+                .ectsPoints(studentCommand.getEctsPoints())
+                .enrolledStudiesAtYear(studentCommand.getEnrolledStudiesAtYear())
+                .currentSemester(studentCommand.getCurrentSemester())
+                .email(studentCommand.getEmail())
+                .phone(studentCommand.getPhone())
+                .major(studentCommand.getMajor())
+                .build();
     }
 
     public static StudentDTO toDTO(Student student) {
