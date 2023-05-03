@@ -7,3 +7,18 @@ VALUES
     ('5719273628', 'Ivana', 'Kovac', '1999-09-20', 90, 2018, 2, 'ivana.kovac@student.com', '+38597777777', 'Mathematics'),
     ('2957281941', 'Luka', 'Hodak', '2003-04-15', 65, 2022, 1, 'luka.hodak@student.com', '+38595555555', 'Environmental Science'),
     ('4791826392', 'Jana', 'Bogdan', '2001-07-25', 80, 2021, 2, 'jana.bogdan@student.com', '+38594444444', 'Architecture');
+
+INSERT INTO course (name, ects)
+VALUES
+    ('Introduction to Computer Science', 6),
+    ('Calculus', 8);
+
+INSERT INTO student_course (student_jmbag, course_id)
+VALUES
+    ('9283758271', 1),
+    ('0284729172', 1),
+    ('7261948261', 2),
+    ('8826183962', 1),
+    ('5719273628', 2),
+    ('2957281941', 1),
+    ('4791826392', 2);
