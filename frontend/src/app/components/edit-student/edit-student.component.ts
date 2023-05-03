@@ -12,7 +12,7 @@ export class EditStudentComponent implements OnInit {
   @Input() title! : string;
   addStudentForm: FormGroup;
   @Input() jmbag?: string;
-   @Output() studentUpdated = new EventEmitter<Student>();
+  @Output() studentUpdated = new EventEmitter<Student>();
 
   // Notification-related
   notificationMessage: string = '';
@@ -51,7 +51,7 @@ export class EditStudentComponent implements OnInit {
   onSubmit(): void {
     if (this.addStudentForm.valid) {
       const newStudent: Student = {
-        ...this.addStudentForm.value
+        ...this.addStudentForm.getRawValue()
       };
 
       // Jmbag exists, this is an editing form
