@@ -23,7 +23,7 @@ public class CourseController {
         return courseService.findAll();
     }
 
-    @GetMapping("/students/{jmbag}")
+    @GetMapping("/student/{jmbag}")
     public List<CourseDTO> getCoursesByStudentJmbag(@PathVariable String jmbag) {
         return courseService.findCoursesByStudentJmbag(jmbag);
     }
