@@ -47,9 +47,9 @@ public class StudentJdbcRepository implements StudentRepository {
     }
 
     @Override
-    public Optional<Student> findStudentByJMBAG(String JMBAG) {
+    public Optional<Student> findStudentByJMBAG(String jmbag) {
         String sql = "SELECT * FROM student WHERE jmbag = ?";
-        return jdbcTemplate.query(sql, studentRowMapper, JMBAG).stream().findFirst();
+        return jdbcTemplate.query(sql, studentRowMapper, jmbag).stream().findFirst();
     }
 
     @Override
