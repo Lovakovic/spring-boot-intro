@@ -60,10 +60,10 @@ public class StudentController {
         return new ResponseEntity<>(detailStudentDTO, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{JMBAG}")
-    public ResponseEntity<DetailStudentDTO> putStudent(@PathVariable String JMBAG,
+    @PutMapping("/{jmbag}")
+    public ResponseEntity<DetailStudentDTO> putStudent(@PathVariable String jmbag,
                                                  @Valid @RequestBody StudentCommand studentCommand) {
-        Pair<Boolean, DetailStudentDTO> result = studentService.putStudent(JMBAG, studentCommand);
+        Pair<Boolean, DetailStudentDTO> result = studentService.putStudent(jmbag, studentCommand);
         Boolean isCreated = result.getFirst();
         DetailStudentDTO updatedStudent = result.getSecond();
 
