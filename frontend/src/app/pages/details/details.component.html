@@ -3,14 +3,30 @@
   <div *ngIf="!editMode">
     <h3 class="font-bold text-xl">{{student.jmbag}} - student details</h3>
     <hr class="my-3">
-    <p>JMBAG: {{student.jmbag}}</p>
-    <p>Number of ECTS points: {{student.ectsPoints}}</p>
-    <p>Full name: {{student.firstName + ' ' + student.lastName}}</p>
-    <p>Year of enrollment: {{student.enrolledStudiesAtYear}}</p>
-    <p>Current semester: {{student.currentSemester}}</p>
-    <p>Email: {{student.email}}</p>
-    <p>Phone: {{student.phone}}</p>
-    <p>Major: {{student.major}}</p>
+    <div>
+      <p>JMBAG: {{student.jmbag}}</p>
+      <p>Number of ECTS points: {{student.ectsPoints}}</p>
+      <p>Full name: {{student.firstName + ' ' + student.lastName}}</p>
+      <p>Year of enrollment: {{student.enrolledStudiesAtYear}}</p>
+      <p>Current semester: {{student.currentSemester}}</p>
+      <p>Email: {{student.email}}</p>
+      <p>Phone: {{student.phone}}</p>
+      <p>Major: {{student.major}}</p>
+    </div>
+    <ng-container *ngIf="courses$ | async as courses; else loadingCourses">
+      <div class="mt-3">
+        <h4 class="text-lg">The student is enrolled in the following courses:</h4>
+        <ul class="list-disc">
+          <div class="mb-3"></div>
+          <li *ngFor="let course of courses"
+              class="ml-9"
+          >{{course.name}}</li>
+        </ul>
+      </div>
+    </ng-container>
+    <ng-template #loadingCourses>
+      <h4>Loading courses...</h4>
+    </ng-template>
   </div>
   <app-edit-student *ngIf="editMode"
                     [title]="'Edit student'"

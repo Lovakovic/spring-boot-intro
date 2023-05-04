@@ -91,6 +91,10 @@ public class StudentJdbcRepository implements StudentRepository {
 
     @Override
     public Boolean deleteByJmbag(String jmbag) {
+        // First we have to delete associated rows in student_course table
+        String deleteAssociationsSql = "DELETE FROM student_course WHERE student_jmbag = ?";
+        jdbcTemplate.update(deleteAssociationsSql, jmbag);
+
         String sql = "DELETE FROM student WHERE jmbag = ?";
         int affectedRows = jdbcTemplate.update(sql, jmbag);
 
