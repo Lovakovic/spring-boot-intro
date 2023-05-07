@@ -25,7 +25,7 @@
       </div>
     </ng-container>
     <ng-template #loadingCourses>
-      <h4>Loading courses...</h4>
+      <h4 class="text-orange-300">Loading courses...</h4>
     </ng-template>
   </div>
   <app-edit-student *ngIf="editMode"
@@ -38,5 +38,5 @@
   >{{editMode ? 'Close edit mode' : 'Edit info'}}</button>
 </ng-container>
 <ng-template #loading>
-  <h3>Loading student info...</h3>
+  <h3 class="text-orange-300">Loading student info...</h3>
 </ng-template>
