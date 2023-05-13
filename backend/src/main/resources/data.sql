@@ -73,3 +73,25 @@ VALUES
     ('4791826392', 6),
     ('4791826392', 8),
     ('4791826392', 13);
+
+
+-- Insert user data
+INSERT INTO "user" (id, username, password)
+VALUES (1, 'user', 'userpass');
+
+INSERT INTO "user" (id, username, password)
+VALUES (2, 'admin', 'adminpass');
+
+-- Insert authority data
+INSERT INTO authority (id, name)
+VALUES (1, 'ROLE_USER');
+
+INSERT INTO authority (id, name)
+VALUES (2, 'ROLE_ADMIN');
+
+-- Link users to their roles
+INSERT INTO user_authority (user_id, authority_id)
+VALUES (1, 1);
+
+INSERT INTO user_authority (user_id, authority_id)
+VALUES (2, 2);

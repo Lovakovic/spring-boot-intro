@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS student_course;
 DROP TABLE IF EXISTS course;
 DROP TABLE IF EXISTS student;
+DROP TABLE IF EXISTS user_authority;
 DROP TABLE IF EXISTS authority;
 DROP TABLE IF EXISTS "user";
 
