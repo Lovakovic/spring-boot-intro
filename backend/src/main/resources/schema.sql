@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS student_course;
 DROP TABLE IF EXISTS course;
 DROP TABLE IF EXISTS student;
 DROP TABLE IF EXISTS authority;
-DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS "user";
 
 CREATE TABLE student (
     jmbag CHAR(10) PRIMARY KEY,
@@ -36,7 +36,7 @@ CREATE TABLE authority (
     name VARCHAR(255)
 );
 
-CREATE TABLE user (
+CREATE TABLE "user" (
     id SERIAL PRIMARY KEY,
     username VARCHAR(255),
     password VARCHAR(255),
@@ -48,6 +48,6 @@ CREATE TABLE user_authority (
     user_id INTEGER NOT NULL,
     authority_id INTEGER NOT NULL,
     PRIMARY KEY (user_id, authority_id),
-    FOREIGN KEY (user_id) REFERENCES user (id),
+    FOREIGN KEY (user_id) REFERENCES "user" (id),
     FOREIGN KEY (authority_id) REFERENCES authority (id)
 );
