@@ -21,6 +21,8 @@ public class Student implements Serializable {
     private String jmbag;
     private String firstName;
     private String lastName;
+
+    @Column(name = "dateOfBirth", nullable = false)
     private LocalDate dateOfBirth;
     private Integer ectsPoints;
     private Integer enrolledStudiesAtYear;
