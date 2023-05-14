@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/courses")
+@RequestMapping("/course")
 @CrossOrigin(origins = "*")
 public class CourseController {
     private final CourseService courseService;
@@ -19,8 +19,12 @@ public class CourseController {
     }
 
     @GetMapping
-    public List<CourseDTO> getAllCourses() {
-        return courseService.findAll();
+    public List<CourseDTO> getCourses(@RequestParam(value = "jmbag", required = false) String jmbag) {
+        if (jmbag != null) {
+            return courseService.findByStudents_Jmbag(jmbag);
+        } else {
+            return courseService.findAll();
+        }
     }
 
     @GetMapping("/student/{jmbag}")
