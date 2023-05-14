@@ -10,12 +10,7 @@ CREATE TABLE student (
     firstName VARCHAR(255) NOT NULL,
     lastName VARCHAR(255) NOT NULL,
     dateOfBirth DATE NOT NULL,
-    ectsPoints INTEGER NOT NULL,
-    enrolledStudiesAtYear INTEGER NOT NULL,
-    currentSemester INTEGER NOT NULL,
-    email VARCHAR(255),
-    phone VARCHAR(20),
-    major VARCHAR(255) NOT NULL
+    ectsPoints INTEGER NOT NULL
 );
 
 CREATE TABLE course (
