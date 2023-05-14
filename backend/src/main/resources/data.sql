@@ -77,10 +77,10 @@ VALUES
 
 -- Insert user data
 INSERT INTO "user" (id, username, password)
-VALUES (1, 'user', 'userpass');
+VALUES (1, 'user', '$2a$10$TYExkmI7uVXXVadrdTTa0OQTOorVV32jTjK.Py2BPQjEojbAx96yy');
 
 INSERT INTO "user" (id, username, password)
-VALUES (2, 'admin', 'adminpass');
+VALUES (2, 'admin', '$2a$10$TYExkmI7uVXXVadrdTTa0OQTOorVV32jTjK.Py2BPQjEojbAx96yy');
 
 -- Insert authority data
 INSERT INTO authority (id, name)

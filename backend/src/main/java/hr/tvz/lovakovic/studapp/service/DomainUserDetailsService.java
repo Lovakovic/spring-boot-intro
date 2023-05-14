@@ -1,42 +1,43 @@
 package hr.tvz.lovakovic.studapp.service;
 
+import hr.tvz.lovakovic.studapp.model.User;
 import hr.tvz.lovakovic.studapp.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
+@Component("userDetailsService")
 public class DomainUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-    @Autowired
     public DomainUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    @Transactional
+    public UserDetails loadUserByUsername(final String username) {
+
         return userRepository
-                .findByUsername(username)
-                .map(user -> new User(
-                        user.getUsername(),
-                        user.getPassword(),
-                        getAuthorities(user)))
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
+                .findOneByUsername(username)
+                .map(this::createSpringSecurityUser)
+                .orElseThrow(() -> new UsernameNotFoundException("User " + username + " was not found in the database"));
     }
 
-    private Collection<? extends GrantedAuthority> getAuthorities(hr.tvz.lovakovic.studapp.model.User user) {
-        return user.getAuthorities().stream()
+    private org.springframework.security.core.userdetails.User createSpringSecurityUser(User user) {
+        List<GrantedAuthority> grantedAuthorities = user
+                .getAuthorities()
+                .stream()
                 .map(authority -> new SimpleGrantedAuthority(authority.getName()))
                 .collect(Collectors.toList());
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
     }
 }
