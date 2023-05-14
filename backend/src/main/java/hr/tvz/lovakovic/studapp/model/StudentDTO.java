@@ -8,11 +8,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class StudentDTO {
+    private String jmbag;
+    private Integer ectsPoints;
+    private Boolean tuitionShouldBePaid;
     private String firstName;
     private String lastName;
     private String dateOfBirth;
-    private String jmbag;
-    private Integer ectsPoints;
     private Integer enrolledStudiesAtYear;
     private Integer currentSemester;
 }

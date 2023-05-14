@@ -30,6 +30,7 @@ public class StudentMapper {
         studentDTO.setEctsPoints(student.getEctsPoints());
         studentDTO.setFirstName(student.getFirstName());
         studentDTO.setLastName(student.getLastName());
+        studentDTO.setTuitionShouldBePaid(student.getEctsPoints() < student.getCurrentSemester() * 25);
         studentDTO.setDateOfBirth(student.getDateOfBirth().format(DateTimeFormatter.ISO_DATE));
         studentDTO.setEnrolledStudiesAtYear(student.getEnrolledStudiesAtYear());
         studentDTO.setCurrentSemester(student.getCurrentSemester());
