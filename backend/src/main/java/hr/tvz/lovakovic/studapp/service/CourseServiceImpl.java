@@ -26,7 +26,7 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public List<CourseDTO> findCoursesByStudentJmbag(String jmbag) {
+    public List<CourseDTO> findByStudents_Jmbag(String jmbag) {
         return courseRepository.findByStudents_Jmbag(jmbag).stream()
                 .map(this::convertToCourseDTO)
                 .toList();
