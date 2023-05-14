@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface CourseService {
     List<CourseDTO> findAll();
-    List<CourseDTO> findCoursesByStudentJmbag(String jmbag);
     CourseDTO convertToCourseDTO(Course course);
+    List<CourseDTO> findByStudents_Jmbag(String jmbag);
 }
