@@ -32,11 +32,6 @@ public class StudentJdbcRepository implements StudentRepository {
         student.setLastName(rs.getString("lastName"));
         student.setDateOfBirth(rs.getDate("dateOfBirth").toLocalDate());
         student.setEctsPoints(rs.getInt("ectsPoints"));
-        student.setEnrolledStudiesAtYear(rs.getInt("enrolledStudiesAtYear"));
-        student.setCurrentSemester(rs.getInt("currentSemester"));
-        student.setEmail(rs.getString("email"));
-        student.setPhone(rs.getString("phone"));
-        student.setMajor(rs.getString("major"));
         return student;
     };
 
@@ -60,11 +55,6 @@ public class StudentJdbcRepository implements StudentRepository {
         parameters.put("lastName", student.getLastName());
         parameters.put("dateOfBirth", student.getDateOfBirth());
         parameters.put("ectsPoints", student.getEctsPoints());
-        parameters.put("enrolledStudiesAtYear", student.getEnrolledStudiesAtYear());
-        parameters.put("currentSemester", student.getCurrentSemester());
-        parameters.put("email", student.getEmail());
-        parameters.put("phone", student.getPhone());
-        parameters.put("major", student.getMajor());
 
         simpleJdbcInsert.execute(parameters);
         return student;
@@ -72,22 +62,17 @@ public class StudentJdbcRepository implements StudentRepository {
 
     @Override
     public Student replace(String jmbag, Student newStudent) {
-        String sql = "UPDATE student SET firstName = ?, lastName = ?, dateOfBirth = ?, ectsPoints = ?, " +
-                "enrolledStudiesAtYear = ?, currentSemester = ?, email = ?, phone = ?, major = ? WHERE jmbag = ?";
+        String sql = "UPDATE student SET firstName = ?, lastName = ?, dateOfBirth = ?, ectsPoints = ? WHERE jmbag = ?";
 
         jdbcTemplate.update(sql,
                 newStudent.getFirstName(),
                 newStudent.getLastName(),
                 newStudent.getDateOfBirth(),
                 newStudent.getEctsPoints(),
-                newStudent.getEnrolledStudiesAtYear(),
-                newStudent.getCurrentSemester(),
-                newStudent.getEmail(),
-                newStudent.getPhone(),
-                newStudent.getMajor(),
                 jmbag);
         return newStudent;
     }
+
 
     @Override
     public Boolean deleteByJmbag(String jmbag) {
