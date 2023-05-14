@@ -23,11 +23,6 @@ public class Student implements Serializable {
     private String lastName;
     private LocalDate dateOfBirth;
     private Integer ectsPoints;
-    private Integer enrolledStudiesAtYear;
-    private Integer currentSemester;
-    private String email;
-    private String phone;
-    private String major;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "student_course",
