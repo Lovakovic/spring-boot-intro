@@ -1,7 +1,6 @@
 package hr.tvz.lovakovic.studapp.controller;
 
 import hr.tvz.lovakovic.studapp.exception.StudentAlreadyExistsException;
-import hr.tvz.lovakovic.studapp.model.DetailStudentDTO;
 import hr.tvz.lovakovic.studapp.model.StudentCommand;
 import hr.tvz.lovakovic.studapp.model.StudentDTO;
 import hr.tvz.lovakovic.studapp.service.StudentService;
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/student")
+@RequestMapping("/student")
 @CrossOrigin(origins = "*")
 public class StudentController {
 
@@ -31,9 +30,6 @@ public class StudentController {
         return studentService.findAll();
     }
 
-    @GetMapping("/detail")
-    public List<DetailStudentDTO> getAllDetailStudents() { return studentService.findAllDetail(); }
-
     @GetMapping("/{JMBAG}")
     public ResponseEntity<StudentDTO> getStudentByJMBAG(@PathVariable String JMBAG) {
         StudentDTO studentDTO = studentService.findStudentByJMBAG(JMBAG);
@@ -44,28 +40,18 @@ public class StudentController {
         }
     }
 
-    @GetMapping("/detail/{JMBAG}")
-    public ResponseEntity<DetailStudentDTO> getDetailStudentByJMBAG(@PathVariable String JMBAG) {
-        DetailStudentDTO detailStudentDTO = studentService.findDetailStudentByJMBAG(JMBAG);
-        if (detailStudentDTO != null) {
-            return ResponseEntity.ok(detailStudentDTO);
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-    }
-
     @PostMapping
-    public ResponseEntity<DetailStudentDTO> addStudent(@Valid @RequestBody StudentCommand studentCommand) {
-        DetailStudentDTO detailStudentDTO = studentService.addStudent(studentCommand);
+    public ResponseEntity<StudentDTO> addStudent(@Valid @RequestBody StudentCommand studentCommand) {
+        StudentDTO detailStudentDTO = studentService.addStudent(studentCommand);
         return new ResponseEntity<>(detailStudentDTO, HttpStatus.CREATED);
     }
 
     @PutMapping("/{jmbag}")
-    public ResponseEntity<DetailStudentDTO> putStudent(@PathVariable String jmbag,
-                                                 @Valid @RequestBody StudentCommand studentCommand) {
-        Pair<Boolean, DetailStudentDTO> result = studentService.putStudent(jmbag, studentCommand);
+    public ResponseEntity<StudentDTO> putStudent(@PathVariable String jmbag,
+                                                       @Valid @RequestBody StudentCommand studentCommand) {
+        Pair<Boolean, StudentDTO> result = studentService.putStudent(jmbag, studentCommand);
         Boolean isCreated = result.getFirst();
-        DetailStudentDTO updatedStudent = result.getSecond();
+        StudentDTO updatedStudent = result.getSecond();
 
         if (isCreated) {
             return new ResponseEntity<>(updatedStudent, HttpStatus.CREATED);
