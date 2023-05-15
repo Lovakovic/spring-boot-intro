@@ -47,3 +47,13 @@ CREATE TABLE user_authority (
     FOREIGN KEY (user_id) REFERENCES "user" (id),
     FOREIGN KEY (authority_id) REFERENCES authority (id)
 );
+
+CREATE TABLE login_history (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    role_id INTEGER NOT NULL,
+    dateTimeLogin TIMESTAMP NOT NULL,
+    dateTimeLogoff TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES "user" (id),
+    FOREIGN KEY (role_id) REFERENCES authority (id)
+);
