@@ -22,6 +22,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getCurrentUser().subscribe((currentUser: User) => {
       this.userService.currentUser = currentUser;
+      this.isNavbarCollapsed = true;
     });
   }
 
