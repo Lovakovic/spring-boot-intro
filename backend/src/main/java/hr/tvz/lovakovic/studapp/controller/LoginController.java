@@ -3,6 +3,7 @@ package hr.tvz.lovakovic.studapp.controller;
 import hr.tvz.lovakovic.studapp.security.JWTFilter;
 import hr.tvz.lovakovic.studapp.security.TokenProvider;
 import hr.tvz.lovakovic.studapp.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.http.HttpHeaders;
@@ -50,6 +51,29 @@ public class LoginController {
 
         return new ResponseEntity<>(new JWTToken(jwt), httpHeaders, HttpStatus.OK);
     }
+
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout(HttpServletRequest request) {
+        String username = getUsernameFromRequest(request);
+        if (username != null) {
+            userService.logUserLogout(username);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+    }
+
+    private String getUsernameFromRequest(HttpServletRequest request) {
+        String header = request.getHeader(JWTFilter.AUTHORIZATION_HEADER);
+        if (header != null && header.startsWith("Bearer ")) {
+            String authToken = header.substring(7);
+            String username = tokenProvider.getUsernameFromToken(authToken);
+            return username;
+        } else {
+            return null;
+        }
+    }
+
 
 
     /**

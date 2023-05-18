@@ -13,6 +13,7 @@ public interface UserService {
     Optional<UserDTO> findByUsernae(String username);
     UserDTO convertUserToDTO(User user);
     void logUserLogin(String username);
+    void logUserLogout(String username);
 
     static Optional<String> getCurrentUserUsername() {
         SecurityContext securityContext = SecurityContextHolder.getContext();

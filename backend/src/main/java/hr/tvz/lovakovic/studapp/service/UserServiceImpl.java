@@ -44,6 +44,20 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Async
+    @Override
+    public void logUserLogout(String username) {
+        Optional<User> userOptional = userRepository.findOneByUsername(username);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            Login lastLoginRecord = loginRepository.findTopByUserOrderByDateTimeLoginDesc(user);
+            if (lastLoginRecord != null && lastLoginRecord.getDateTimeLogoff() == null) {
+                lastLoginRecord.setDateTimeLogoff(LocalDateTime.now());
+                loginRepository.save(lastLoginRecord);
+            }
+        }
+    }
+
 
     @Override
     public UserDTO convertUserToDTO(User user) { return UserMapper.toDTO(user); }
