@@ -2,6 +2,7 @@ package hr.tvz.lovakovic.studapp.controller;
 
 import hr.tvz.lovakovic.studapp.security.JWTFilter;
 import hr.tvz.lovakovic.studapp.security.TokenProvider;
+import hr.tvz.lovakovic.studapp.service.UserService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.http.HttpHeaders;
@@ -20,14 +21,18 @@ public class LoginController {
 
     private final TokenProvider tokenProvider;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
+    private final UserService userService;
 
-    public LoginController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder) {
+    public LoginController(TokenProvider tokenProvider,
+                           AuthenticationManagerBuilder authenticationManagerBuilder,
+                           UserService userService) {
         this.tokenProvider = tokenProvider;
         this.authenticationManagerBuilder = authenticationManagerBuilder;
+        this.userService = userService;
     }
 
     @PostMapping("/authenticate")
-    public ResponseEntity<JWTToken> authenticate(@Valid @RequestBody LoginController.LoginDTO login) {
+    public ResponseEntity<JWTToken> authenticate(@Valid @RequestBody LoginDTO login) {
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                 login.getUsername(),
                 login.getPassword()
@@ -35,6 +40,8 @@ public class LoginController {
 
         Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
         SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        userService.logUserLogin(login.getUsername()); // Delegate logging to the UserService
 
         String jwt = tokenProvider.createToken(authentication);
 

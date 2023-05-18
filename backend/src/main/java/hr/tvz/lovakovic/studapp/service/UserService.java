@@ -12,6 +12,7 @@ import java.util.Optional;
 public interface UserService {
     Optional<UserDTO> findByUsernae(String username);
     UserDTO convertUserToDTO(User user);
+    void logUserLogin(String username);
 
     static Optional<String> getCurrentUserUsername() {
         SecurityContext securityContext = SecurityContextHolder.getContext();
