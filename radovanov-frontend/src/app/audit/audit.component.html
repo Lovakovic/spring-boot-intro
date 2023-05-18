@@ -4,20 +4,36 @@
         <table class="table bg-white">
             <thead class="bg-light text-muted">
             <tr>
-                <th scope="col" class="py-3 px-6 text-uppercase">ID</th>
-                <th scope="col" class="py-3 px-6 text-uppercase">Username</th>
-                <th scope="col" class="py-3 px-6 text-uppercase">Role Name</th>
-                <th scope="col" class="py-3 px-6 text-uppercase">Login Time</th>
-                <th scope="col" class="py-3 px-6 text-uppercase">Logoff Time</th>
+                <th scope="col" class="py-3 px-6 text-uppercase sort-header"
+                    [class.sort-asc]="sort.column === 'id' && !sort.desc"
+                    [class.sort-desc]="sort.column === 'id' && sort.desc"
+                    (click)="sortData('id')">ID</th>
+                <th scope="col" class="py-3 px-6 text-uppercase sort-header"
+                    [class.sort-asc]="sort.column === 'username' && !sort.desc"
+                    [class.sort-desc]="sort.column === 'username' && sort.desc"
+                    (click)="sortData('username')">Username</th>
+                <th scope="col" class="py-3 px-6 text-uppercase sort-header"
+                    [class.sort-asc]="sort.column === 'roleName' && !sort.desc"
+                    [class.sort-desc]="sort.column === 'roleName' && sort.desc"
+                    (click)="sortData('roleName')">Role Name</th>
+                <th scope="col" class="py-3 px-6 text-uppercase sort-header"
+                    [class.sort-asc]="sort.column === 'dateTimeLogin' && !sort.desc"
+                    [class.sort-desc]="sort.column === 'dateTimeLogin' && sort.desc"
+                    (click)="sortData('dateTimeLogin')">Login Time</th>
+                <th scope="col" class="py-3 px-6 text-uppercase sort-header"
+                    [class.sort-asc]="sort.column === 'dateTimeLogoff' && !sort.desc"
+                    [class.sort-desc]="sort.column === 'dateTimeLogoff' && sort.desc"
+                    (click)="sortData('dateTimeLogoff')">Logoff Time</th>
             </tr>
+
             </thead>
             <tbody>
             <tr *ngFor="let login of logins">
                 <td class="py-3 px-6">{{login.id}}</td>
                 <td class="py-3 px-6">{{login.username}}</td>
                 <td class="py-3 px-6">{{login.roleName}}</td>
-                <td class="py-3 px-6">{{login.dateTimeLogin}}</td>
-                <td class="py-3 px-6">{{login.dateTimeLogoff}}</td>
+                <td class="py-3 px-6">{{this.datePipe.transform(login.dateTimeLogin, 'dd.MM.yyyy. HH:mm')}}</td>
+                <td class="py-3 px-6">{{this.datePipe.transform(login.dateTimeLogoff, 'dd.MM.yyyy. HH:mm')}}</td>
             </tr>
             </tbody>
         </table>
