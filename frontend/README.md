@@ -1,6 +1,12 @@
-# Java3
+# Old Frontend Client for the Java3 Project
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.4.
+
+## :warning: Important Notice :warning:
+
+This is an old version of the frontend client for the Java3 project. It was developed with an earlier version of the API, which has since been updated and modified. As a result, the client might not work properly, as the API paths and data structures might have changed.
+
+While there are currently no plans to update this client to align with the new API, it's not completely off the table. However, please bear in mind that it's highly unlikely that this client will be revived in its current form.
 
 ## Development server
 
@@ -25,3 +31,4 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
