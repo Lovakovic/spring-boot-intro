@@ -31,7 +31,7 @@ export class NavbarComponent implements OnInit {
 
       if (currentUser) {
         this.auditService.getLastLoginByUser(currentUser.id).subscribe(login => {
-            this.lastLoginDateTime = this.datePipe.transform(login.dateTimeLogin, 'dd.MM.yyyy. at HH:mm');
+            this.lastLoginDateTime = this.datePipe.transform(login.dateTimeLogin, 'dd.MM.yyyy. HH:mm');
         });
       }
     });
