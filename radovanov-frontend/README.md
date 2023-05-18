@@ -1,6 +1,8 @@
-# StudappFrontend
+# New Frontend Client for Studapp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0. It represents a continuously evolving version of the frontend client for the Studapp project. This base was provided by my professor, and I've been enhancing it with additional features as part of lab assignments. 
+
+This client replaces an older one, which is located in the `backend` repository. Despite the older version having more recent package dependencies, I decided to adopt this client and plan on updating it to a more recent version of Angular, along with other packages. I'm hoping to do this as soon as I gather enough courage! :)
 
 ## Development server
 
@@ -25,4 +27,3 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-"# tvz-wauj-2019-2020-client" 
