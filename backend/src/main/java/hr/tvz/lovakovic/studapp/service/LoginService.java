@@ -1,16 +1,16 @@
 package hr.tvz.lovakovic.studapp.service;
 
-import hr.tvz.lovakovic.studapp.model.Login;
-import hr.tvz.lovakovic.studapp.model.LoginDTO;
+import hr.tvz.lovakovic.studapp.model.LoginRecord;
+import hr.tvz.lovakovic.studapp.model.LoginRecordDTO;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface LoginService {
-    List<LoginDTO> getAllLogins();
-    Optional<LoginDTO> getLoginById(Long id);
-    LoginDTO addLogin(Login login);
-    LoginDTO updateLogin(Login login);
+    List<LoginRecordDTO> getAllLogins();
+    Optional<LoginRecordDTO> getLoginById(Long id);
+    LoginRecordDTO addLogin(LoginRecord loginRecord);
+    LoginRecordDTO updateLogin(LoginRecord loginRecord);
     void deleteLogin(Long id);
-    Optional<LoginDTO> getLastLoginByUser(Long userId);
+    Optional<LoginRecordDTO> getLastLoginByUser(Long userId);
 }

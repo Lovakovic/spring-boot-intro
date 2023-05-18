@@ -1,7 +1,7 @@
 package hr.tvz.lovakovic.studapp.controller;
 
-import hr.tvz.lovakovic.studapp.model.Login;
-import hr.tvz.lovakovic.studapp.model.LoginDTO;
+import hr.tvz.lovakovic.studapp.model.LoginRecord;
+import hr.tvz.lovakovic.studapp.model.LoginRecordDTO;
 import hr.tvz.lovakovic.studapp.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,25 +21,25 @@ public class LoginHistoryController {
     }
 
     @GetMapping
-    public List<LoginDTO> getAllLogins() {
+    public List<LoginRecordDTO> getAllLogins() {
         return loginService.getAllLogins();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<LoginDTO> getLoginById(@PathVariable Long id) {
+    public ResponseEntity<LoginRecordDTO> getLoginById(@PathVariable Long id) {
         return loginService.getLoginById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public LoginDTO addLogin(@RequestBody Login login) {
-        return loginService.addLogin(login);
+    public LoginRecordDTO addLogin(@RequestBody LoginRecord loginRecord) {
+        return loginService.addLogin(loginRecord);
     }
 
     @PutMapping
-    public LoginDTO updateLogin(@RequestBody Login login) {
-        return loginService.updateLogin(login);
+    public LoginRecordDTO updateLogin(@RequestBody LoginRecord loginRecord) {
+        return loginService.updateLogin(loginRecord);
     }
 
     @DeleteMapping("/{id}")
@@ -48,7 +48,7 @@ public class LoginHistoryController {
     }
 
     @GetMapping("/lastLogin/{userId}")
-    public ResponseEntity<LoginDTO> getLastLoginByUser(@PathVariable Long userId) {
+    public ResponseEntity<LoginRecordDTO> getLastLoginByUser(@PathVariable Long userId) {
         return loginService.getLastLoginByUser(userId)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());

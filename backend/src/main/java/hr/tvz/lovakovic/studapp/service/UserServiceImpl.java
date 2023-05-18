@@ -1,7 +1,7 @@
 package hr.tvz.lovakovic.studapp.service;
 
 import hr.tvz.lovakovic.studapp.mapper.UserMapper;
-import hr.tvz.lovakovic.studapp.model.Login;
+import hr.tvz.lovakovic.studapp.model.LoginRecord;
 import hr.tvz.lovakovic.studapp.model.User;
 import hr.tvz.lovakovic.studapp.model.UserDTO;
 import hr.tvz.lovakovic.studapp.repository.LoginRepository;
@@ -36,11 +36,11 @@ public class UserServiceImpl implements UserService {
         Optional<User> userOptional = userRepository.findOneByUsername(username);
         if (userOptional.isPresent()) {
             User user = userOptional.get();
-            Login loginHistory = new Login();
-            loginHistory.setUser(user);
-            loginHistory.setRole(user.getAuthorities().iterator().next());
-            loginHistory.setDateTimeLogin(LocalDateTime.now());
-            loginRepository.save(loginHistory);
+            LoginRecord loginRecordHistory = new LoginRecord();
+            loginRecordHistory.setUser(user);
+            loginRecordHistory.setRole(user.getAuthorities().iterator().next());
+            loginRecordHistory.setDateTimeLogin(LocalDateTime.now());
+            loginRepository.save(loginRecordHistory);
         }
     }
 
@@ -50,10 +50,10 @@ public class UserServiceImpl implements UserService {
         Optional<User> userOptional = userRepository.findOneByUsername(username);
         if (userOptional.isPresent()) {
             User user = userOptional.get();
-            Login lastLoginRecord = loginRepository.findTopByUserOrderByDateTimeLoginDesc(user);
-            if (lastLoginRecord != null && lastLoginRecord.getDateTimeLogoff() == null) {
-                lastLoginRecord.setDateTimeLogoff(LocalDateTime.now());
-                loginRepository.save(lastLoginRecord);
+            LoginRecord lastLoginRecordRecord = loginRepository.findTopByUserOrderByDateTimeLoginDesc(user);
+            if (lastLoginRecordRecord != null && lastLoginRecordRecord.getDateTimeLogoff() == null) {
+                lastLoginRecordRecord.setDateTimeLogoff(LocalDateTime.now());
+                loginRepository.save(lastLoginRecordRecord);
             }
         }
     }

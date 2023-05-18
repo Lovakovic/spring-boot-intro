@@ -1,16 +1,16 @@
 package hr.tvz.lovakovic.studapp.mapper;
 
-import hr.tvz.lovakovic.studapp.model.Login;
-import hr.tvz.lovakovic.studapp.model.LoginDTO;
+import hr.tvz.lovakovic.studapp.model.LoginRecord;
+import hr.tvz.lovakovic.studapp.model.LoginRecordDTO;
 
 public class LoginMapper {
-    public static LoginDTO toDto(Login login) {
-        LoginDTO loginDTO = new LoginDTO();
-        loginDTO.setId(login.getId());
-        loginDTO.setUsername(login.getUser().getUsername());
-        loginDTO.setRoleName(login.getRole().getName());
-        loginDTO.setDateTimeLogin(login.getDateTimeLogin());
-        loginDTO.setDateTimeLogoff(login.getDateTimeLogoff());
-        return loginDTO;
+    public static LoginRecordDTO toDto(LoginRecord loginRecord) {
+        LoginRecordDTO loginRecordDTO = new LoginRecordDTO();
+        loginRecordDTO.setId(loginRecord.getId());
+        loginRecordDTO.setUsername(loginRecord.getUser().getUsername());
+        loginRecordDTO.setRoleName(loginRecord.getRole().getName());
+        loginRecordDTO.setDateTimeLogin(loginRecord.getDateTimeLogin());
+        loginRecordDTO.setDateTimeLogoff(loginRecord.getDateTimeLogoff());
+        return loginRecordDTO;
     }
 }

@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Entity
 @Data
 @Table(name = "login_history")
-public class Login {
+public class LoginRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
