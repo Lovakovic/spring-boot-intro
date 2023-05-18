@@ -4,6 +4,7 @@ import { LoginService } from '../login/login.service';
 import { User } from '../user/user.model';
 import { Router } from '@angular/router';
 import {AuditService} from '../audit/audit.service';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
@@ -19,7 +20,8 @@ export class NavbarComponent implements OnInit {
     private loginService: LoginService,
     private auditService: AuditService,
     public userService: UserService,
-    private router: Router) {
+    private router: Router,
+    private datePipe: DatePipe) {
   }
 
   ngOnInit(): void {
@@ -29,7 +31,7 @@ export class NavbarComponent implements OnInit {
 
       if (currentUser) {
         this.auditService.getLastLoginByUser(currentUser.id).subscribe(login => {
-          this.lastLoginDateTime = login.dateTimeLogin;
+            this.lastLoginDateTime = this.datePipe.transform(login.dateTimeLogin, 'dd.MM.yyyy. u HH:mm');
         });
       }
     });

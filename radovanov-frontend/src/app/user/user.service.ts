@@ -28,4 +28,11 @@ export class UserService {
     }
   }
 
+    isRoleUser(): boolean {
+        if (this.currentUser) {
+            return this.currentUser.authorities.some((authority: string) => authority === Authority.USER);
+        } else {
+            return false;
+        }
+    }
 }

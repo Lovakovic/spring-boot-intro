@@ -21,6 +21,7 @@ import { StudentEditComponent } from './students/student-edit/student-edit.compo
 import { ToastrModule } from 'ngx-toastr';
 import { ForbiddenPageComponent } from './forbidden-page/forbidden-page.component';
 import { AuditComponent } from './audit/audit.component';
+import {DatePipe} from '@angular/common';
 
 
 
@@ -58,7 +59,8 @@ import { AuditComponent } from './audit/audit.component';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthExpiredInterceptor,
       multi: true
-    }
+    },
+      DatePipe
   ],
   bootstrap: [AppComponent]
 })
