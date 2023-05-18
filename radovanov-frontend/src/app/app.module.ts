@@ -25,11 +25,6 @@ import {DatePipe} from '@angular/common';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
-// HttpLoaderFactory function for ngx-translate
-export function HttpLoaderFactory(http: HttpClient) {
-    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +49,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgbModule,
     ToastrModule.forRoot(),
     TranslateModule.forRoot({
-        defaultLanguage: 'hr',
+        defaultLanguage: 'en',
         loader: {
             provide: TranslateLoader,
             useFactory: HttpLoaderFactory,
@@ -78,3 +73,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+// HttpLoaderFactory function for ngx-translate
+export function HttpLoaderFactory(http: HttpClient) {
+    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}

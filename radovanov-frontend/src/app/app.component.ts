@@ -9,7 +9,8 @@ import {TranslateService} from '@ngx-translate/core';
 export class AppComponent implements OnInit {
 
     constructor(private translate: TranslateService) {
-        translate.setDefaultLang('hr');
+        translate.addLangs(['en', 'hr']);
+        translate.setDefaultLang('en');
     }
 
   ngOnInit(): void {

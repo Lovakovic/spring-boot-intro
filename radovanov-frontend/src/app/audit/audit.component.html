@@ -1,5 +1,5 @@
 <div class="container py-4">
-    <h2 class="mb-4 text-primary text-center">Povijest prijava</h2>
+    <h2 class="mb-4 text-primary text-center">{{ 'HISTORY_LOGIN' | translate }}</h2>
     <div class="shadow rounded border border-light">
         <table class="table bg-white">
             <thead class="bg-light text-muted">
@@ -7,19 +7,19 @@
                 <th scope="col" class="py-3 px-6 text-uppercase sort-header"
                     [class.sort-asc]="sort.column === 'username' && !sort.desc"
                     [class.sort-desc]="sort.column === 'username' && sort.desc"
-                    (click)="sortData('username')">Korisničko ime</th>
+                    (click)="sortData('username')">{{ 'USERNAME' | translate }}</th>
                 <th scope="col" class="py-3 px-6 text-uppercase sort-header"
                     [class.sort-asc]="sort.column === 'roleName' && !sort.desc"
                     [class.sort-desc]="sort.column === 'roleName' && sort.desc"
-                    (click)="sortData('roleName')">Ime uloge</th>
+                    (click)="sortData('roleName')">{{ 'ROLE_NAME' | translate }}</th>
                 <th scope="col" class="py-3 px-6 text-uppercase sort-header"
                     [class.sort-asc]="sort.column === 'dateTimeLogin' && !sort.desc"
                     [class.sort-desc]="sort.column === 'dateTimeLogin' && sort.desc"
-                    (click)="sortData('dateTimeLogin')">Vrijeme prijave</th>
+                    (click)="sortData('dateTimeLogin')">{{ 'TIME_LOGIN' | translate }}</th>
                 <th scope="col" class="py-3 px-6 text-uppercase sort-header"
                     [class.sort-asc]="sort.column === 'dateTimeLogoff' && !sort.desc"
                     [class.sort-desc]="sort.column === 'dateTimeLogoff' && sort.desc"
-                    (click)="sortData('dateTimeLogoff')">Vrijeme odjave</th>
+                    (click)="sortData('dateTimeLogoff')">{{ 'TIME_LOGOFF' | translate }}</th>
             </tr>
 
             </thead>

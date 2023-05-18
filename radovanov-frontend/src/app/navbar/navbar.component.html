@@ -14,7 +14,7 @@
             <ul class="navbar-nav" *ngIf="isUserLoggedIn()">
                 <li class="nav-item">
                     <a class="nav-link cursor-pointer">
-                        <span>Korisničko ime: {{userService?.currentUser?.username}}</span>
+                        <span>{{ 'USERNAME' | translate }}: {{userService?.currentUser?.username}}</span>
                     </a>
                 </li>
                 <ng-container *ngIf="userService.isRoleUser()">
@@ -25,7 +25,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link cursor-pointer">
-                            <span>Posljednja prijava: {{lastLoginDateTime}}</span>
+                            <span>{{ 'LAST_LOGIN' | translate }}: {{lastLoginDateTime}}</span>
                         </a>
                     </li>
                 </ng-container>
@@ -36,7 +36,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link cursor-pointer">
-                        <span>Uloga: <span *ngFor="let role of userService?.currentUser?.authorities">{{role}} </span></span>
+                        <span>{{ 'ROLE' | translate }}: <span *ngFor="let role of userService?.currentUser?.authorities">{{role}} </span></span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -46,7 +46,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link cursor-pointer" id="logout" (click)="logout()">
-                        <span> Odjava</span>
+                        <span> {{ 'LOGOUT' | translate }}</span>
                     </a>
                 </li>
             </ul>
