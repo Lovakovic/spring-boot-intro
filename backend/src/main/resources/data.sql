@@ -95,3 +95,35 @@ VALUES (1, 1);
 
 INSERT INTO user_authority (user_id, authority_id)
 VALUES (2, 2);
+
+
+-- Login history entries
+INSERT INTO login_history (user_id, role_id, date_time_login, date_time_logoff)
+VALUES (1, 1, '2023-05-15 09:30:00', '2023-05-15 11:45:00');
+
+INSERT INTO login_history (user_id, role_id, date_time_login, date_time_logoff)
+VALUES (1, 1, '2023-05-15 12:00:00', '2023-05-15 14:30:00');
+
+INSERT INTO login_history (user_id, role_id, date_time_login, date_time_logoff)
+VALUES (2, 2, '2023-05-15 15:00:00', '2023-05-15 17:15:00');
+
+INSERT INTO login_history (user_id, role_id, date_time_login, date_time_logoff)
+VALUES (1, 1, '2023-05-15 18:00:00', '2023-05-15 20:30:00');
+
+INSERT INTO login_history (user_id, role_id, date_time_login, date_time_logoff)
+VALUES (2, 2, '2023-05-15 21:00:00', '2023-05-15 23:15:00');
+
+INSERT INTO login_history (user_id, role_id, date_time_login, date_time_logoff)
+VALUES (1, 1, '2023-05-15 08:30:00', '2023-05-15 10:45:00');
+
+INSERT INTO login_history (user_id, role_id, date_time_login, date_time_logoff)
+VALUES (2, 2, '2023-05-15 11:00:00', '2023-05-15 13:15:00');
+
+INSERT INTO login_history (user_id, role_id, date_time_login, date_time_logoff)
+VALUES (1, 1, '2023-05-15 14:00:00', '2023-05-15 16:30:00');
+
+INSERT INTO login_history (user_id, role_id, date_time_login, date_time_logoff)
+VALUES (2, 2, '2023-05-15 17:00:00', '2023-05-15 19:15:00');
+
+INSERT INTO login_history (user_id, role_id, date_time_login, date_time_logoff)
+VALUES (1, 1, '2023-05-15 20:00:00', '2023-05-15 22:30:00');

@@ -3,6 +3,7 @@ import { UserService } from '../user/user.service';
 import { LoginService } from '../login/login.service';
 import { User } from '../user/user.model';
 import { Router } from '@angular/router';
+import {AuditService} from '../audit/audit.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,9 +13,11 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
 
   isNavbarCollapsed: boolean;
+  lastLoginDateTime: string | Date;
 
   constructor(
     private loginService: LoginService,
+    private auditService: AuditService,
     public userService: UserService,
     private router: Router) {
   }
@@ -23,6 +26,12 @@ export class NavbarComponent implements OnInit {
     this.userService.getCurrentUser().subscribe((currentUser: User) => {
       this.userService.currentUser = currentUser;
       this.isNavbarCollapsed = true;
+
+      if (currentUser) {
+        this.auditService.getLastLoginByUser(currentUser.id).subscribe(login => {
+          this.lastLoginDateTime = login.dateTimeLogin;
+        });
+      }
     });
   }
 

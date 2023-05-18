@@ -1,9 +1,10 @@
 DROP TABLE IF EXISTS student_course;
+DROP TABLE IF EXISTS login_history;
+DROP TABLE IF EXISTS user_authority;
 DROP TABLE IF EXISTS course;
 DROP TABLE IF EXISTS student;
-DROP TABLE IF EXISTS user_authority;
-DROP TABLE IF EXISTS authority;
 DROP TABLE IF EXISTS "user";
+DROP TABLE IF EXISTS authority;
 
 CREATE TABLE student (
     jmbag CHAR(10) PRIMARY KEY,
@@ -52,8 +53,8 @@ CREATE TABLE login_history (
     id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL,
     role_id INTEGER NOT NULL,
-    dateTimeLogin TIMESTAMP NOT NULL,
-    dateTimeLogoff TIMESTAMP,
+    date_time_login TIMESTAMP NOT NULL,
+    date_time_logoff TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES "user" (id),
     FOREIGN KEY (role_id) REFERENCES authority (id)
 );

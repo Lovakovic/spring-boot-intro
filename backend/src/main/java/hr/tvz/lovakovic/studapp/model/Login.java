@@ -22,10 +22,10 @@ public class Login {
     @JoinColumn(name = "role_id", nullable = false)
     private Authority role;
 
-    @Column(name = "dateTimeLogin", nullable = false)
+    @Column(name = "date_time_login", nullable = false)
     private LocalDateTime dateTimeLogin;
 
-    @Column(name = "dateTimeLogoff")
+    @Column(name = "date_time_logoff")
     private LocalDateTime dateTimeLogoff;
 }
 

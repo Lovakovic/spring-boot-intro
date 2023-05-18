@@ -10,6 +10,7 @@ import { StudentEditComponent } from './students/student-edit/student-edit.compo
 import { AuthGuardService } from './guards/auth-guard.service';
 import { AdminAuthGuardService } from './guards/admin-auth-guard.service';
 import { ForbiddenPageComponent } from './forbidden-page/forbidden-page.component';
+import {AuditComponent} from './audit/audit.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,11 @@ const routes: Routes = [
     path: 'students',
     component: StudentsComponent,
     canActivate: [AuthGuardService]
+  },
+  {
+    path: 'logins',
+    component: AuditComponent,
+    canActivate: [AdminAuthGuardService]
   },
   {
     path: 'students/detail/:jmbag',

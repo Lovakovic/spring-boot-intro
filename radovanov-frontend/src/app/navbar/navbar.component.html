@@ -24,6 +24,11 @@
                         <span>|</span>
                     </a>
                 </li>
+                <li class="nav-item" *ngIf="">
+                  <a class="nav-link cursor-pointer">
+                    <span>Last Login: {{lastLoginDateTime}}</span>
+                  </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link cursor-pointer">
                         <span>Uloga: <span *ngFor="let role of userService?.currentUser?.authorities">{{role}} </span></span>

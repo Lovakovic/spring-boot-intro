@@ -20,6 +20,7 @@ import { StudentCreateComponent } from './students/student-create/student-create
 import { StudentEditComponent } from './students/student-edit/student-edit.component';
 import { ToastrModule } from 'ngx-toastr';
 import { ForbiddenPageComponent } from './forbidden-page/forbidden-page.component';
+import { AuditComponent } from './audit/audit.component';
 
 
 
@@ -35,7 +36,8 @@ import { ForbiddenPageComponent } from './forbidden-page/forbidden-page.componen
     StudentFormComponent,
     StudentCreateComponent,
     StudentEditComponent,
-    ForbiddenPageComponent
+    ForbiddenPageComponent,
+    AuditComponent
   ],
   imports: [
     BrowserModule,
