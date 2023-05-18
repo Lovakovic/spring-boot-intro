@@ -43,9 +43,11 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    this.loginService.logout();
-    this.userService.currentUser = null;
-    this.router.navigate(['/login']);
+    this.loginService.logoutServer().subscribe(() => {
+        this.loginService.logout();
+        this.userService.currentUser = null;
+        this.router.navigate(['/login']);
+      });
   }
 
   isUserLoggedIn(): boolean {

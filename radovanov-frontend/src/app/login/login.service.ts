@@ -18,6 +18,10 @@ export class LoginService {
     return this.http.post<JwtToken>(`${SERVER_API_URL}/api/authenticate`, userCredentials);
   }
 
+    logoutServer(): Observable<void> {
+        return this.http.post<void>(`${SERVER_API_URL}/api/logout`, {});
+    }
+
   logout(): void {
     localStorage.removeItem('token');
   }

@@ -20,19 +20,18 @@ export class UserService {
     return this.http.get<User>(`${this.usersUrl}/current-user`);
   }
 
-  isRoleAdmin(): boolean {
-    if (this.currentUser) {
-      return this.currentUser.authorities.some((authority: string) => authority === Authority.ADMIN);
-    } else {
-      return false;
+    isRoleAdmin(): boolean {
+        if (this.currentUser) {
+          return this.currentUser.authorities.some((authority: string) => authority === Authority.ADMIN);
+        } else {
+          return false;
+        }
     }
-  }
 
     isRoleUser(): boolean {
         if (this.currentUser) {
             return this.currentUser.authorities.some((authority: string) =>
             {
-                console.log('User has user authority.');
                 return authority === Authority.USER;
             });
         } else {
