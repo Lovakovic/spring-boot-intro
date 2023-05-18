@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StudentsComponent } from './students/students.component';
 import { StudentDetailComponent } from './students/student-detail/student-detail.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS, HttpClient} from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -22,8 +22,13 @@ import { ToastrModule } from 'ngx-toastr';
 import { ForbiddenPageComponent } from './forbidden-page/forbidden-page.component';
 import { AuditComponent } from './audit/audit.component';
 import {DatePipe} from '@angular/common';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
-
+// HttpLoaderFactory function for ngx-translate
+export function HttpLoaderFactory(http: HttpClient) {
+    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -47,7 +52,15 @@ import {DatePipe} from '@angular/common';
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    TranslateModule.forRoot({
+        defaultLanguage: 'hr',
+        loader: {
+            provide: TranslateLoader,
+            useFactory: HttpLoaderFactory,
+            deps: [HttpClient]
+        }
+    })
   ],
   providers: [
     {
