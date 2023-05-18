@@ -1,25 +1,25 @@
-<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-  <h2 class="mb-4 text-lg font-semibold text-blue-600">Login History</h2>
-  <div class="shadow overflow-hidden rounded border-b border-gray-200">
-    <table class="min-w-full bg-white">
-      <thead class="bg-gray-200 text-gray-600">
-      <tr>
-        <th scope="col" class="py-3 px-6 text-left text-sm font-medium uppercase tracking-wider">ID</th>
-        <th scope="col" class="py-3 px-6 text-left text-sm font-medium uppercase tracking-wider">Username</th>
-        <th scope="col" class="py-3 px-6 text-left text-sm font-medium uppercase tracking-wider">Role Name</th>
-        <th scope="col" class="py-3 px-12 text-left text-sm font-medium uppercase tracking-wider">Login Time</th>
-        <th scope="col" class="py-3 px-12 text-left text-sm font-medium uppercase tracking-wider">Logoff Time</th>
-      </tr>
-      </thead>
-      <tbody class="divide-y divide-gray-200">
-      <tr *ngFor="let login of logins">
-        <td class="py-3 px-6 text-left whitespace-nowrap">{{login.id}}</td>
-        <td class="py-3 px-6 text-left whitespace-nowrap">{{login.username}}</td>
-        <td class="py-3 px-6 text-left whitespace-nowrap">{{login.roleName}}</td>
-        <td class="py-3 px-12 text-left whitespace-nowrap">{{login.dateTimeLogin}}</td>
-        <td class="py-3 px-12 text-left whitespace-nowrap">{{login.dateTimeLogoff}}</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
+<div class="container py-4">
+    <h2 class="mb-4 text-primary">Login History</h2>
+    <div class="shadow rounded border border-light">
+        <table class="table bg-white">
+            <thead class="bg-light text-muted">
+            <tr>
+                <th scope="col" class="py-3 px-6 text-uppercase">ID</th>
+                <th scope="col" class="py-3 px-6 text-uppercase">Username</th>
+                <th scope="col" class="py-3 px-6 text-uppercase">Role Name</th>
+                <th scope="col" class="py-3 px-6 text-uppercase">Login Time</th>
+                <th scope="col" class="py-3 px-6 text-uppercase">Logoff Time</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let login of logins">
+                <td class="py-3 px-6">{{login.id}}</td>
+                <td class="py-3 px-6">{{login.username}}</td>
+                <td class="py-3 px-6">{{login.roleName}}</td>
+                <td class="py-3 px-6">{{login.dateTimeLogin}}</td>
+                <td class="py-3 px-6">{{login.dateTimeLogoff}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
