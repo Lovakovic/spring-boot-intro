@@ -5,6 +5,7 @@ import { User } from '../user/user.model';
 import { Router } from '@angular/router';
 import {AuditService} from '../audit/audit.service';
 import {DatePipe} from '@angular/common';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navbar',
@@ -13,15 +14,18 @@ import {DatePipe} from '@angular/common';
 })
 export class NavbarComponent implements OnInit {
 
-  isNavbarCollapsed: boolean;
-  lastLoginDateTime: string | Date;
+    isNavbarCollapsed: boolean;
+    lastLoginDateTime: string | Date;
+    selectedLanguage = 'hr';
+    flag = 'https://flagcdn.com/w40/hr.png';
 
   constructor(
     private loginService: LoginService,
     private auditService: AuditService,
     public userService: UserService,
     private router: Router,
-    private datePipe: DatePipe) {
+    private datePipe: DatePipe,
+    private translate: TranslateService) {
   }
 
   ngOnInit(): void {
@@ -37,6 +41,19 @@ export class NavbarComponent implements OnInit {
     });
   }
 
+    switchLang(lang: string) {
+        this.translate.use(lang);
+        this.selectedLanguage = lang;
+
+        switch (lang) {
+            case 'hr':
+                this.flag = 'https://flagcdn.com/w40/hr.png';
+                break;
+            case 'en':
+                this.flag = 'https://flagcdn.com/w40/us.png';
+                break;
+        }
+    }
 
   toggleNavbar() {
     this.isNavbarCollapsed = !this.isNavbarCollapsed;
