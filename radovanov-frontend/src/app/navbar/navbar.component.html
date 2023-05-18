@@ -19,16 +19,18 @@
                         <span>Korisničko ime: {{userService?.currentUser?.username}}</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link cursor-pointer">
-                        <span>|</span>
-                    </a>
-                </li>
-                <li class="nav-item" *ngIf="userService.isRoleUser">
-                  <a class="nav-link cursor-pointer">
-                    <span>Posljednja prijava: {{lastLoginDateTime}}</span>
-                  </a>
-                </li>
+                <ng-container *ngIf="userService.isRoleUser()">
+                    <li class="nav-item">
+                        <a class="nav-link cursor-pointer">
+                            <span>|</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link cursor-pointer">
+                            <span>Posljednja prijava: {{lastLoginDateTime}}</span>
+                        </a>
+                    </li>
+                </ng-container>
                 <li class="nav-item">
                     <a class="nav-link cursor-pointer">
                         <span>|</span>

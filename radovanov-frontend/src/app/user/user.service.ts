@@ -30,7 +30,11 @@ export class UserService {
 
     isRoleUser(): boolean {
         if (this.currentUser) {
-            return this.currentUser.authorities.some((authority: string) => authority === Authority.USER);
+            return this.currentUser.authorities.some((authority: string) =>
+            {
+                console.log('User has user authority.');
+                return authority === Authority.USER;
+            });
         } else {
             return false;
         }
