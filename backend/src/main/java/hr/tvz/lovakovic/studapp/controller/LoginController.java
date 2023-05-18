@@ -6,6 +6,7 @@ import hr.tvz.lovakovic.studapp.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -75,26 +76,16 @@ public class LoginController {
     }
 
 
-
-    /**
-     * Return jwt token in body because Angular has problems with parsing plain string response entity
-     */
+    @Data
     static class JWTToken {
         private String token;
 
         public JWTToken(String token) {
             this.token = token;
         }
-
-        public String getToken() {
-            return token;
-        }
-
-        public void setToken(String token) {
-            this.token = token;
-        }
     }
 
+    @Data
     static class LoginDTO {
 
         @NotNull
@@ -103,20 +94,5 @@ public class LoginController {
         @NotNull
         private String password;
 
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
     }
 }
