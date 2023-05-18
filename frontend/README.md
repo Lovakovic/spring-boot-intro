@@ -1,10 +1,10 @@
-# Old Frontend Client for the Java3 Project
+# Old Frontend Client for the StudApp Project
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.4.
 
 ## :warning: Important Notice :warning:
 
-This is an old version of the frontend client for the Java3 project. It was developed with an earlier version of the API, which has since been updated and modified. As a result, the client might not work properly, as the API paths and data structures might have changed.
+This is an old version of the frontend client for the StudApp project. It was developed with an earlier version of the API, which has since been updated and modified. As a result, the client might not work properly, as the API paths and data structures might have changed.
 
 While there are currently no plans to update this client to align with the new API, it's not completely off the table. However, please bear in mind that it's highly unlikely that this client will be revived in its current form.
 
