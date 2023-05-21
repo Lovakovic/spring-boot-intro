@@ -68,8 +68,7 @@ public class LoginController {
         String header = request.getHeader(JWTFilter.AUTHORIZATION_HEADER);
         if (header != null && header.startsWith("Bearer ")) {
             String authToken = header.substring(7);
-            String username = tokenProvider.getUsernameFromToken(authToken);
-            return username;
+            return tokenProvider.getUsernameFromToken(authToken);
         } else {
             return null;
         }
