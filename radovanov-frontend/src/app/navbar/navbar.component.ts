@@ -16,8 +16,8 @@ export class NavbarComponent implements OnInit {
 
     isNavbarCollapsed: boolean;
     lastLoginDateTime: string | Date;
-    selectedLanguage = 'hr';
-    flag = 'https://flagcdn.com/w40/hr.png';
+    selectedLanguage = 'en';
+    flag = 'https://flagcdn.com/w40/us.png';
 
   constructor(
     private loginService: LoginService,
