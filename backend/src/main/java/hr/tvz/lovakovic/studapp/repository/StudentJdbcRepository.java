@@ -1,5 +1,6 @@
 package hr.tvz.lovakovic.studapp.repository;
 
+import hr.tvz.lovakovic.studapp.model.AboutMe;
 import hr.tvz.lovakovic.studapp.model.Student;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -8,15 +9,15 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Repository
 @Primary
 public class StudentJdbcRepository implements StudentRepository {
-    private final JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
     private final SimpleJdbcInsert simpleJdbcInsert;
 
     public StudentJdbcRepository(DataSource dataSource) {
@@ -25,26 +26,20 @@ public class StudentJdbcRepository implements StudentRepository {
                 .withTableName("student");
     }
 
-    private final RowMapper<Student> studentRowMapper = (rs, rowNum) -> {
-        Student student = new Student();
-        student.setJmbag(rs.getString("jmbag"));
-        student.setFirstName(rs.getString("firstName"));
-        student.setLastName(rs.getString("lastName"));
-        student.setDateOfBirth(rs.getDate("dateOfBirth").toLocalDate());
-        student.setEctsPoints(rs.getInt("ectsPoints"));
-        return student;
-    };
-
     @Override
     public List<Student> findAll() {
         String sql = "SELECT * FROM student";
-        return jdbcTemplate.query(sql, studentRowMapper);
+        List<Student> students = jdbcTemplate.query(sql, this::mapStudent);
+        students.forEach(this::loadAboutMe);
+        return students;
     }
 
     @Override
     public Optional<Student> findStudentByJMBAG(String jmbag) {
         String sql = "SELECT * FROM student WHERE jmbag = ?";
-        return jdbcTemplate.query(sql, studentRowMapper, jmbag).stream().findFirst();
+        List<Student> students = jdbcTemplate.query(sql, new Object[]{jmbag}, this::mapStudent);
+        students.forEach(this::loadAboutMe);
+        return students.stream().findFirst();
     }
 
     @Override
@@ -73,7 +68,6 @@ public class StudentJdbcRepository implements StudentRepository {
         return newStudent;
     }
 
-
     @Override
     public Boolean deleteByJmbag(String jmbag) {
         // First we have to delete associated rows in student_course table
@@ -84,5 +78,29 @@ public class StudentJdbcRepository implements StudentRepository {
         int affectedRows = jdbcTemplate.update(sql, jmbag);
 
         return affectedRows > 0;
+    }
+
+    private Student mapStudent(ResultSet rs, int rowNum) throws SQLException {
+        Student student = new Student();
+        student.setJmbag(rs.getString("jmbag"));
+        student.setFirstName(rs.getString("firstName"));
+        student.setLastName(rs.getString("lastName"));
+        student.setDateOfBirth(rs.getDate("dateOfBirth").toLocalDate());
+        student.setEctsPoints(rs.getInt("ectsPoints"));
+        return student;
+    }
+
+    private void loadAboutMe(Student student) {
+        String aboutMeSql = "SELECT id, language, content FROM about_me WHERE jmbag = ?";
+        Set<AboutMe> aboutMeSet = new HashSet<>(jdbcTemplate.query(aboutMeSql, new Object[] { student.getJmbag() },
+                (rs, rowNum) -> {
+                    AboutMe aboutMe = new AboutMe();
+                    aboutMe.setId(rs.getInt("id"));
+                    aboutMe.setStudent(student);
+                    aboutMe.setLanguage(rs.getString("language"));
+                    aboutMe.setContent(rs.getString("content"));
+                    return aboutMe;
+                }));
+        student.setAboutMe(aboutMeSet);
     }
 }

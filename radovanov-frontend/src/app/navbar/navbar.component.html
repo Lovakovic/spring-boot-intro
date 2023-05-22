@@ -62,14 +62,19 @@
                     <button class="btn btn-outline-primary" id="dropdownMenuButton" ngbDropdownToggle>
                         <img [src]="flag" alt="{{selectedLanguage | uppercase}}" class="p-1 pr-3">
                     </button>
-                    <div ngbDropdownMenu aria-labelledby="dropdownMenuButton">
-                        <button ngbDropdownItem (click)="switchLang('hr')" *ngIf="selectedLanguage !== 'hr'">
-                            <img src="https://flagcdn.com/w40/hr.png" alt="HR">
-                        </button>
-                        <button ngbDropdownItem (click)="switchLang('en')" *ngIf="selectedLanguage !== 'en'">
-                            <img src="https://flagcdn.com/w40/us.png" alt="EN">
-                        </button>
-                    </div>
+                  <div ngbDropdownMenu aria-labelledby="dropdownMenuButton">
+                    <button ngbDropdownItem (click)="switchLang('hr')" *ngIf="selectedLanguage !== 'hr'">
+                      <img src="https://flagcdn.com/w40/hr.png" alt="HR">
+                    </button>
+                    <button ngbDropdownItem (click)="switchLang('en')" *ngIf="selectedLanguage !== 'en'">
+                      <img src="https://flagcdn.com/w40/us.png" alt="EN">
+                    </button>
+                    <button ngbDropdownItem (click)="switchLang('zh')" *ngIf="selectedLanguage !== 'zh'">
+                      <img src="https://flagcdn.com/w40/cn.png" alt="ZH">
+                    </button>
+                  </div>
+
+
                 </div>
             </li>
         </ul>

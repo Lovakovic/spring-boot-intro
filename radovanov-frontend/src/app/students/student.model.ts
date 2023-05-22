@@ -5,4 +5,5 @@ export class Student {
   firstName: string;
   lastName: string;
   dateOfBirth: Date;
+  aboutMe: { [language: string]: string };
 }

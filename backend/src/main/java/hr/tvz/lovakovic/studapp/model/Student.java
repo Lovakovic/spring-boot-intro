@@ -30,4 +30,7 @@ public class Student implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "course_id")
     )
     private Set<Course> courses;
+
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<AboutMe> aboutMe;
 }

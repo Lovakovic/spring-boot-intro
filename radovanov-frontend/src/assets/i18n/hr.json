@@ -39,5 +39,6 @@
   "FIRST_NAME_PLACEHOLDER": "Unesite ime studenta",
   "LAST_NAME_PLACEHOLDER": "Unesite prezime studenta",
   "JMBAG_PLACEHOLDER": "Unesite JMBAG studenta",
-  "ECTS_POINTS_PLACEHOLDER": "Unesite broj ECTS bodova"
+  "ECTS_POINTS_PLACEHOLDER": "Unesite broj ECTS bodova",
+  "ABOUT_ME": "O meni"
 }

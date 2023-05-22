@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS student_course;
 DROP TABLE IF EXISTS login_history;
 DROP TABLE IF EXISTS user_authority;
+DROP TABLE IF EXISTS about_me;
 DROP TABLE IF EXISTS course;
 DROP TABLE IF EXISTS student;
 DROP TABLE IF EXISTS "user";
@@ -13,6 +14,15 @@ CREATE TABLE student (
     dateOfBirth DATE NOT NULL,
     ectsPoints INTEGER NOT NULL
 );
+
+CREATE TABLE about_me (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    jmbag CHAR(10),
+    language VARCHAR(255) NOT NULL,
+    content TEXT,
+    FOREIGN KEY (jmbag) REFERENCES student(jmbag)
+);
+
 
 CREATE TABLE course (
     id SERIAL PRIMARY KEY,

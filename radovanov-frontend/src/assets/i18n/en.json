@@ -39,5 +39,6 @@
   "FIRST_NAME_PLACEHOLDER": "Enter student's first name",
   "LAST_NAME_PLACEHOLDER": "Enter student's last name",
   "JMBAG_PLACEHOLDER": "Enter student's JMBAG",
-  "ECTS_POINTS_PLACEHOLDER": "Enter the number of ECTS points"
+  "ECTS_POINTS_PLACEHOLDER": "Enter the number of ECTS points",
+  "ABOUT_ME": "About me"
 }

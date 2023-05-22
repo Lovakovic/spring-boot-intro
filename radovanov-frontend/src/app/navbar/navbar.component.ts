@@ -41,19 +41,23 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-    switchLang(lang: string) {
-        this.translate.use(lang);
-        this.selectedLanguage = lang;
+  switchLang(lang: string) {
+    this.translate.use(lang);
+    this.selectedLanguage = lang;
 
-        switch (lang) {
-            case 'hr':
-                this.flag = 'https://flagcdn.com/w40/hr.png';
-                break;
-            case 'en':
-                this.flag = 'https://flagcdn.com/w40/us.png';
-                break;
-        }
+    switch (lang) {
+      case 'hr':
+        this.flag = 'https://flagcdn.com/w40/hr.png';
+        break;
+      case 'en':
+        this.flag = 'https://flagcdn.com/w40/us.png';
+        break;
+      case 'zh':
+        this.flag = 'https://flagcdn.com/w40/cn.png';
+        break;
     }
+  }
+
 
   toggleNavbar() {
     this.isNavbarCollapsed = !this.isNavbarCollapsed;
