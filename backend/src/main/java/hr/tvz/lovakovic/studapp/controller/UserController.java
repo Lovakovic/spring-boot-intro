@@ -24,7 +24,7 @@ public class UserController {
     public ResponseEntity<UserDTO> getCurrentUser() {
         return UserService.getCurrentUserUsername()
                 .map(
-                        usrename -> userService.findByUsernae(usrename)
+                        usrename -> userService.findByUsername(usrename)
                                 .map(ResponseEntity::ok)
                                 .orElseGet(() -> ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).build())
                 ).orElseGet(() -> ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).build());

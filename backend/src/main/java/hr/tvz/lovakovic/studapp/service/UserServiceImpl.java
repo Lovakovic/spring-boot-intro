@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<UserDTO> findByUsernae(String username) {
+    public Optional<UserDTO> findByUsername(String username) {
         return userRepository.findOneByUsername(username).map(this::convertUserToDTO);
     }
 

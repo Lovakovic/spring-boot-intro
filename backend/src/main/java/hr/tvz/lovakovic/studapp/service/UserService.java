@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Optional;
 
 public interface UserService {
-    Optional<UserDTO> findByUsernae(String username);
+    Optional<UserDTO> findByUsername(String username);
     UserDTO convertUserToDTO(User user);
     void logUserLogin(String username);
     void logUserLogout(String username);
@@ -23,8 +23,7 @@ public interface UserService {
     private static String extractPrincipal(Authentication authentication) {
         if (authentication == null) {
             return null;
-        } else if (authentication.getPrincipal() instanceof UserDetails) {
-            UserDetails springSecurityUser = (UserDetails) authentication.getPrincipal();
+        } else if (authentication.getPrincipal() instanceof UserDetails springSecurityUser) {
             return springSecurityUser.getUsername();
         } else if (authentication.getPrincipal() instanceof String) {
             return (String) authentication.getPrincipal();
