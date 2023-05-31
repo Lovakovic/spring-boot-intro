@@ -22,28 +22,19 @@ public class LoginServiceImpl implements LoginService {
         this.loginRepository = loginRepository;
     }
 
+    @Override
     public List<LoginRecordDTO> getAllLogins() {
         return loginRepository.findAll().stream()
                 .map(LoginMapper::toDto)
                 .collect(Collectors.toList());
     }
 
+    @Override
     public Optional<LoginRecordDTO> getLoginById(Long id) {
         return loginRepository.findById(id).map(LoginMapper::toDto);
     }
 
-    public LoginRecordDTO addLogin(LoginRecord loginRecord) {
-        return LoginMapper.toDto(loginRepository.save(loginRecord));
-    }
-
-    public LoginRecordDTO updateLogin(LoginRecord loginRecord) {
-        return LoginMapper.toDto(loginRepository.save(loginRecord));
-    }
-
-    public void deleteLogin(Long id) {
-        loginRepository.deleteById(id);
-    }
-
+    @Override
     public Optional<LoginRecordDTO> getLastLoginByUser(Long userId) {
         return loginRepository.findTopByUserIdOrderByDateTimeLoginDesc(userId)
                 .map(LoginMapper::toDto);

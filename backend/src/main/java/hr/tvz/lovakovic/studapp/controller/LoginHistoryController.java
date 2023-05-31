@@ -32,24 +32,6 @@ public class LoginHistoryController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // Isn't being used because login activity is being tracked server-side
-    @PostMapping
-    public LoginRecordDTO addLogin(@RequestBody LoginRecord loginRecord) {
-        return loginService.addLogin(loginRecord);
-    }
-
-    // Isn't being user by current frontend client
-    @PutMapping
-    public LoginRecordDTO updateLogin(@RequestBody LoginRecord loginRecord) {
-        return loginService.updateLogin(loginRecord);
-    }
-
-    // Isn't being user by current frontend client
-    @DeleteMapping("/{id}")
-    public void deleteLogin(@PathVariable Long id) {
-        loginService.deleteLogin(id);
-    }
-
     @GetMapping("/lastLogin/{userId}")
     public ResponseEntity<LoginRecordDTO> getLastLoginByUser(@PathVariable Long userId) {
         return loginService.getLastLoginByUser(userId)

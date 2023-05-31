@@ -9,8 +9,5 @@ import java.util.Optional;
 public interface LoginService {
     List<LoginRecordDTO> getAllLogins();
     Optional<LoginRecordDTO> getLoginById(Long id);
-    LoginRecordDTO addLogin(LoginRecord loginRecord);
-    LoginRecordDTO updateLogin(LoginRecord loginRecord);
-    void deleteLogin(Long id);
     Optional<LoginRecordDTO> getLastLoginByUser(Long userId);
 }
