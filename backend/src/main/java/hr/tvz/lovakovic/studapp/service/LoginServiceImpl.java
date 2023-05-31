@@ -2,7 +2,6 @@ package hr.tvz.lovakovic.studapp.service;
 
 
 import hr.tvz.lovakovic.studapp.mapper.LoginMapper;
-import hr.tvz.lovakovic.studapp.model.LoginRecord;
 import hr.tvz.lovakovic.studapp.model.LoginRecordDTO;
 import hr.tvz.lovakovic.studapp.repository.LoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
