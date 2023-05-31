@@ -12,12 +12,12 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class LoginServiceImpl implements LoginService {
+public class LoginRecordServiceImpl implements LoginRecordService {
 
     private final LoginRepository loginRepository;
 
     @Autowired
-    public LoginServiceImpl(LoginRepository loginRepository) {
+    public LoginRecordServiceImpl(LoginRepository loginRepository) {
         this.loginRepository = loginRepository;
     }
 

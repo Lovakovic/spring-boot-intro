@@ -1,7 +1,7 @@
 package hr.tvz.lovakovic.studapp.controller;
 
 import hr.tvz.lovakovic.studapp.model.LoginRecordDTO;
-import hr.tvz.lovakovic.studapp.service.LoginService;
+import hr.tvz.lovakovic.studapp.service.LoginRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,28 +15,28 @@ import java.util.List;
 @RequestMapping("/api/login")
 public class LoginHistoryController {
 
-    private final LoginService loginService;
+    private final LoginRecordService loginRecordService;
 
     @Autowired
-    public LoginHistoryController(LoginService loginService) {
-        this.loginService = loginService;
+    public LoginHistoryController(LoginRecordService loginRecordService) {
+        this.loginRecordService = loginRecordService;
     }
 
     @GetMapping
     public List<LoginRecordDTO> getAllLogins() {
-        return loginService.getAllLogins();
+        return loginRecordService.getAllLogins();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<LoginRecordDTO> getLoginById(@PathVariable Long id) {
-        return loginService.getLoginById(id)
+        return loginRecordService.getLoginById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping("/lastLogin/{userId}")
     public ResponseEntity<LoginRecordDTO> getLastLoginByUser(@PathVariable Long userId) {
-        return loginService.getLastLoginByUser(userId)
+        return loginRecordService.getLastLoginByUser(userId)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
