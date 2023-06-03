@@ -3,7 +3,6 @@ package hr.tvz.lovakovic.studapp.service;
 import hr.tvz.lovakovic.studapp.model.User;
 import hr.tvz.lovakovic.studapp.model.UserDTO;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -16,18 +15,16 @@ public interface UserService {
     void logUserLogout(String username);
 
     static Optional<String> getCurrentUserUsername() {
-        SecurityContext securityContext = SecurityContextHolder.getContext();
-        return Optional.ofNullable(extractPrincipal(securityContext.getAuthentication()));
-    }
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-    private static String extractPrincipal(Authentication authentication) {
-        if (authentication == null) {
-            return null;
-        } else if (authentication.getPrincipal() instanceof UserDetails springSecurityUser) {
-            return springSecurityUser.getUsername();
-        } else if (authentication.getPrincipal() instanceof String) {
-            return (String) authentication.getPrincipal();
+        if (authentication != null) {
+            Object principal = authentication.getPrincipal();
+
+            if (principal instanceof UserDetails) {
+                return Optional.of(((UserDetails) principal).getUsername());
+            }
         }
-        return null;
+
+        return Optional.empty();
     }
 }
