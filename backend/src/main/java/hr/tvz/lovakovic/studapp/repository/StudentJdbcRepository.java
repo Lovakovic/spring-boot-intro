@@ -28,10 +28,10 @@ public class StudentJdbcRepository implements StudentRepository {
     private final RowMapper<Student> studentRowMapper = (rs, rowNum) -> {
         Student student = new Student();
         student.setJmbag(rs.getString("jmbag"));
-        student.setFirstName(rs.getString("firstName"));
-        student.setLastName(rs.getString("lastName"));
-        student.setDateOfBirth(rs.getDate("dateOfBirth").toLocalDate());
-        student.setEctsPoints(rs.getInt("ectsPoints"));
+        student.setFirstName(rs.getString("first_name"));
+        student.setLastName(rs.getString("last_name"));
+        student.setDateOfBirth(rs.getDate("date_of_birth").toLocalDate());
+        student.setEctsPoints(rs.getInt("ects_points"));
         return student;
     };
 
@@ -51,10 +51,10 @@ public class StudentJdbcRepository implements StudentRepository {
     public Student save(Student student) {
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("jmbag", student.getJmbag());
-        parameters.put("firstName", student.getFirstName());
-        parameters.put("lastName", student.getLastName());
-        parameters.put("dateOfBirth", student.getDateOfBirth());
-        parameters.put("ectsPoints", student.getEctsPoints());
+        parameters.put("first_name", student.getFirstName());
+        parameters.put("last_name", student.getLastName());
+        parameters.put("date_of_birth", student.getDateOfBirth());
+        parameters.put("ects_points", student.getEctsPoints());
 
         simpleJdbcInsert.execute(parameters);
         return student;
@@ -62,7 +62,7 @@ public class StudentJdbcRepository implements StudentRepository {
 
     @Override
     public Student replace(String jmbag, Student newStudent) {
-        String sql = "UPDATE student SET firstName = ?, lastName = ?, dateOfBirth = ?, ectsPoints = ? WHERE jmbag = ?";
+        String sql = "UPDATE student SET first_name = ?, last_name = ?, date_of_birth = ?, ects_points = ? WHERE jmbag = ?";
 
         jdbcTemplate.update(sql,
                 newStudent.getFirstName(),
