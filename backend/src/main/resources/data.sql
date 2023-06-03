@@ -1,5 +1,5 @@
 -- Students
-INSERT INTO student (jmbag, firstName, lastName, dateOfBirth, ectsPoints)
+INSERT INTO student (jmbag, first_name, last_name, date_of_birth, ects_points)
 VALUES
     ('9283758271', 'Ivan', 'Markovic', '2000-01-01', 60),
     ('0284729172', 'Horvat', 'Horvatinic', '2001-02-02', 78),
@@ -10,28 +10,28 @@ VALUES
     ('4791826392', 'Jana', 'Bogdan', '2001-07-25', 80);
 
 -- Courses
-INSERT INTO course (name, ects)
+INSERT INTO course (id, name, ects)
 VALUES
-    ('Introduction to Computer Science', 6),
-    ('Calculus', 8),
-    ('Data Structures', 6),
-    ('Algorithms', 6),
-    ('Discrete Mathematics', 6),
-    ('Computer Networks', 6),
-    ('Operating Systems', 6),
-    ('Software Engineering', 6),
-    ('Database Systems', 6),
-    ('Artificial Intelligence', 6),
-    ('Machine Learning', 6),
-    ('Computer Graphics', 6),
-    ('Computer Vision', 6),
-    ('Web Development', 6),
-    ('Mobile Development', 6),
-    ('Embedded Systems', 6),
-    ('Computer Security', 6),
-    ('Cryptography', 6),
-    ('Parallel Computing', 6),
-    ('Programming Languages', 6);
+    (1, 'Introduction to Computer Science', 6),
+    (2, 'Calculus', 8),
+    (3, 'Data Structures', 6),
+    (4, 'Algorithms', 6),
+    (5, 'Discrete Mathematics', 6),
+    (6, 'Computer Networks', 6),
+    (7, 'Operating Systems', 6),
+    (8, 'Software Engineering', 6),
+    (9, 'Database Systems', 6),
+    (10, 'Artificial Intelligence', 6),
+    (11, 'Machine Learning', 6),
+    (12, 'Computer Graphics', 6),
+    (13, 'Computer Vision', 6),
+    (14, 'Web Development', 6),
+    (15, 'Mobile Development', 6),
+    (16, 'Embedded Systems', 6),
+    (17, 'Computer Security', 6),
+    (18, 'Cryptography', 6),
+    (19, 'Parallel Computing', 6),
+    (20, 'Programming Languages', 6);
 
 
 -- Student enrollments
@@ -82,48 +82,34 @@ VALUES (1, 'user', '$2a$10$TYExkmI7uVXXVadrdTTa0OQTOorVV32jTjK.Py2BPQjEojbAx96yy
 INSERT INTO "user" (id, username, password)
 VALUES (2, 'admin', '$2a$10$TYExkmI7uVXXVadrdTTa0OQTOorVV32jTjK.Py2BPQjEojbAx96yy');
 
--- Insert authority data
-INSERT INTO authority (id, name)
-VALUES (1, 'ROLE_USER');
-
-INSERT INTO authority (id, name)
-VALUES (2, 'ROLE_ADMIN');
-
--- Link users to their roles
-INSERT INTO user_authority (user_id, authority_id)
-VALUES (1, 1);
-
-INSERT INTO user_authority (user_id, authority_id)
-VALUES (2, 2);
-
 
 -- Login history entries
-INSERT INTO login_history (user_id, role_id, date_time_login, date_time_logoff)
-VALUES (1, 1, '2023-05-15 09:30:00', '2023-05-15 11:45:00');
+INSERT INTO login_history (id, user_id, role, date_time_login, date_time_logoff)
+VALUES (1, 1, 1, '2023-05-15 09:30:00', '2023-05-15 11:45:00');
 
-INSERT INTO login_history (user_id, role_id, date_time_login, date_time_logoff)
-VALUES (1, 1, '2023-05-15 12:00:00', '2023-05-15 14:30:00');
+INSERT INTO login_history (id, user_id, role, date_time_login, date_time_logoff)
+VALUES (2, 1, 1, '2023-05-15 12:00:00', '2023-05-15 14:30:00');
 
-INSERT INTO login_history (user_id, role_id, date_time_login, date_time_logoff)
-VALUES (2, 2, '2023-05-15 15:00:00', '2023-05-15 17:15:00');
+INSERT INTO login_history (id, user_id, role, date_time_login, date_time_logoff)
+VALUES (3, 2, 2, '2023-05-15 15:00:00', '2023-05-15 17:15:00');
 
-INSERT INTO login_history (user_id, role_id, date_time_login, date_time_logoff)
-VALUES (1, 1, '2023-05-15 18:00:00', '2023-05-15 20:30:00');
+INSERT INTO login_history (id, user_id, role, date_time_login, date_time_logoff)
+VALUES (4, 1, 1, '2023-05-15 18:00:00', '2023-05-15 20:30:00');
 
-INSERT INTO login_history (user_id, role_id, date_time_login, date_time_logoff)
-VALUES (2, 2, '2023-05-15 21:00:00', '2023-05-15 23:15:00');
+INSERT INTO login_history (id, user_id, role, date_time_login, date_time_logoff)
+VALUES (5, 2, 2, '2023-05-15 21:00:00', '2023-05-15 23:15:00');
 
-INSERT INTO login_history (user_id, role_id, date_time_login, date_time_logoff)
-VALUES (1, 1, '2023-05-15 08:30:00', '2023-05-15 10:45:00');
+INSERT INTO login_history (id, user_id, role, date_time_login, date_time_logoff)
+VALUES (6, 1, 1, '2023-05-15 08:30:00', '2023-05-15 10:45:00');
 
-INSERT INTO login_history (user_id, role_id, date_time_login, date_time_logoff)
-VALUES (2, 2, '2023-05-15 11:00:00', '2023-05-15 13:15:00');
+INSERT INTO login_history (id, user_id, role, date_time_login, date_time_logoff)
+VALUES (7, 2, 2, '2023-05-15 11:00:00', '2023-05-15 13:15:00');
 
-INSERT INTO login_history (user_id, role_id, date_time_login, date_time_logoff)
-VALUES (1, 1, '2023-05-15 14:00:00', '2023-05-15 16:30:00');
+INSERT INTO login_history (id, user_id, role, date_time_login, date_time_logoff)
+VALUES (8, 1, 1, '2023-05-15 14:00:00', '2023-05-15 16:30:00');
 
-INSERT INTO login_history (user_id, role_id, date_time_login, date_time_logoff)
-VALUES (2, 2, '2023-05-15 17:00:00', '2023-05-15 19:15:00');
+INSERT INTO login_history (id, user_id, role, date_time_login, date_time_logoff)
+VALUES (9, 2, 2, '2023-05-15 17:00:00', '2023-05-15 19:15:00');
 
-INSERT INTO login_history (user_id, role_id, date_time_login, date_time_logoff)
-VALUES (1, 1, '2023-05-15 20:00:00', '2023-05-15 22:30:00');
+INSERT INTO login_history (id, user_id, role, date_time_login, date_time_logoff)
+VALUES (10, 1, 1, '2023-05-15 20:00:00', '2023-05-15 22:30:00');
