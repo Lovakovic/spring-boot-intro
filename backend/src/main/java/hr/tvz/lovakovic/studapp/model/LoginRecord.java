@@ -18,9 +18,8 @@ public class LoginRecord {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
-    private Authority role;
+    private Role role;
 
     @Column(name = "date_time_login", nullable = false)
     private LocalDateTime dateTimeLogin;

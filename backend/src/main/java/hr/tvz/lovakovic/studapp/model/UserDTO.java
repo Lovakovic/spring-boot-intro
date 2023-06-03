@@ -10,5 +10,5 @@ public class UserDTO {
     private String username;
     private String firstName;
     private String lastName;
-    private Set<String> authorities;
+    private String role;
 }

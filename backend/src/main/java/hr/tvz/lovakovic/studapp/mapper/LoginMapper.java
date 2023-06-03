@@ -8,7 +8,7 @@ public class LoginMapper {
         LoginRecordDTO loginRecordDTO = new LoginRecordDTO();
         loginRecordDTO.setId(loginRecord.getId());
         loginRecordDTO.setUsername(loginRecord.getUser().getUsername());
-        loginRecordDTO.setRoleName(loginRecord.getRole().getName());
+        loginRecordDTO.setRoleName(String.valueOf(loginRecord.getRole()));
         loginRecordDTO.setDateTimeLogin(loginRecord.getDateTimeLogin());
         loginRecordDTO.setDateTimeLogoff(loginRecord.getDateTimeLogoff());
         return loginRecordDTO;
