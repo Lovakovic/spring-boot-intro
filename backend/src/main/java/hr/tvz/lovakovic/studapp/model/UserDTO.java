@@ -2,8 +2,6 @@ package hr.tvz.lovakovic.studapp.model;
 
 import lombok.Data;
 
-import java.util.Set;
-
 @Data
 public class UserDTO {
     private Long id;
