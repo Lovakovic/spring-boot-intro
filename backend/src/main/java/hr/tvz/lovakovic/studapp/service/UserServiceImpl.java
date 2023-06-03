@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
             User user = userOptional.get();
             LoginRecord loginRecordHistory = new LoginRecord();
             loginRecordHistory.setUser(user);
-            loginRecordHistory.setRole(user.getAuthorities().iterator().next());
+            loginRecordHistory.setRole(user.getRole());
             loginRecordHistory.setDateTimeLogin(LocalDateTime.now());
             loginRepository.save(loginRecordHistory);
         }
