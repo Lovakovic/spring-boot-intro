@@ -2,7 +2,7 @@ package hr.tvz.lovakovic.studapp.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import hr.tvz.lovakovic.studapp.model.CourseDTO;
-import hr.tvz.lovakovic.studapp.security.TokenProvider;
+import hr.tvz.lovakovic.studapp.security.JwtService;
 import hr.tvz.lovakovic.studapp.service.CourseService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -35,7 +35,7 @@ public class CourseControllerTest {
     private CourseService courseService;
 
     @MockBean
-    private TokenProvider tokenProvider;
+    private JwtService jwtService;
 
     private ObjectMapper mapper = new ObjectMapper();
 
