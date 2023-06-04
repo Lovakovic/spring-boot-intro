@@ -1,5 +1,7 @@
-package hr.tvz.lovakovic.studapp.model;
+package hr.tvz.lovakovic.studapp.audit;
 
+import hr.tvz.lovakovic.studapp.user.Role;
+import hr.tvz.lovakovic.studapp.user.User;
 import jakarta.persistence.*;
 import lombok.Data;
 

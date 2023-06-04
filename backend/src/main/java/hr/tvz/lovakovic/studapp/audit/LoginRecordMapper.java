@@ -1,9 +1,6 @@
-package hr.tvz.lovakovic.studapp.mapper;
+package hr.tvz.lovakovic.studapp.audit;
 
-import hr.tvz.lovakovic.studapp.model.LoginRecord;
-import hr.tvz.lovakovic.studapp.model.LoginRecordDTO;
-
-public class LoginMapper {
+public class LoginRecordMapper {
     public static LoginRecordDTO toDto(LoginRecord loginRecord) {
         LoginRecordDTO loginRecordDTO = new LoginRecordDTO();
         loginRecordDTO.setId(loginRecord.getId());

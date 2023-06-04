@@ -1,6 +1,4 @@
-package hr.tvz.lovakovic.studapp.service;
-
-import hr.tvz.lovakovic.studapp.model.LoginRecordDTO;
+package hr.tvz.lovakovic.studapp.audit;
 
 import java.util.List;
 import java.util.Optional;

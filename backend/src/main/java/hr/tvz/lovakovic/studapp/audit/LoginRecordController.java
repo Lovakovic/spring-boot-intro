@@ -1,7 +1,5 @@
-package hr.tvz.lovakovic.studapp.controller;
+package hr.tvz.lovakovic.studapp.audit;
 
-import hr.tvz.lovakovic.studapp.model.LoginRecordDTO;
-import hr.tvz.lovakovic.studapp.service.LoginRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,12 +11,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/login")
-public class LoginHistoryController {
+public class LoginRecordController {
 
     private final LoginRecordService loginRecordService;
 
     @Autowired
-    public LoginHistoryController(LoginRecordService loginRecordService) {
+    public LoginRecordController(LoginRecordService loginRecordService) {
         this.loginRecordService = loginRecordService;
     }
 
