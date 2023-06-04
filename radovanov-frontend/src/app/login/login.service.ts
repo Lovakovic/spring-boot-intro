@@ -15,11 +15,11 @@ export class LoginService {
   ) { }
 
   authenticate(userCredentials: UserCredentials): Observable<JwtToken> {
-    return this.http.post<JwtToken>(`${SERVER_API_URL}/api/authenticate`, userCredentials);
+    return this.http.post<JwtToken>(`${SERVER_API_URL}/api/auth/authenticate`, userCredentials);
   }
 
     logoutServer(): Observable<void> {
-        return this.http.post<void>(`${SERVER_API_URL}/api/logout`, {});
+        return this.http.post<void>(`${SERVER_API_URL}/api/auth/logout`, {});
     }
 
   logout(): void {
