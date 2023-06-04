@@ -1,7 +1,5 @@
 package hr.tvz.lovakovic.studapp.student;
 
-import hr.tvz.lovakovic.studapp.model.StudentCommand;
-
 import java.time.format.DateTimeFormatter;
 
 public class StudentMapper {

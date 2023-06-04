@@ -1,6 +1,5 @@
 package hr.tvz.lovakovic.studapp.student;
 
-import hr.tvz.lovakovic.studapp.model.StudentCommand;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Pair;

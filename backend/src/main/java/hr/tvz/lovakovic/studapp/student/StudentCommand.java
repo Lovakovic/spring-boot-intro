@@ -1,4 +1,4 @@
-package hr.tvz.lovakovic.studapp.model;
+package hr.tvz.lovakovic.studapp.student;
 
 
 import jakarta.validation.constraints.NotBlank;

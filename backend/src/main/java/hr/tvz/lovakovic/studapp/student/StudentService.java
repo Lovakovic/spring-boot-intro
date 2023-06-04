@@ -1,6 +1,5 @@
 package hr.tvz.lovakovic.studapp.student;
 
-import hr.tvz.lovakovic.studapp.model.StudentCommand;
 import org.springframework.data.util.Pair;
 
 import java.util.List;
