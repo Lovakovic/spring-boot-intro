@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { SERVER_API_URL } from '../constants/app.constants';
 import { HttpClient } from '@angular/common/http';
 import { User } from './user.model';
-import { Observable } from 'rxjs';
+import {Observable, throwError} from 'rxjs';
 import { Authority } from '../constants/authority.constants';
+import {catchError} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,24 +17,29 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getCurrentUser(): Observable<User> {
-    return this.http.get<User>(`${this.usersUrl}/current-user`);
-  }
+    getCurrentUser(): Observable<User> {
+        return this.http.get<User>(`${this.usersUrl}/current-user`).pipe(
+            catchError(err => {
+                if (err.status === 403) {
+                    localStorage.removeItem('token'); // remove token from localstorage
+                }
+
+                return throwError(err);
+            })
+        );
+    }
 
     isRoleAdmin(): boolean {
-        if (this.currentUser) {
-          return this.currentUser.authorities.some((authority: string) => authority === Authority.ADMIN);
-        } else {
+      if (this.currentUser) {
+          return this.currentUser.role === Authority.ADMIN;
+      } else {
           return false;
-        }
+      }
     }
 
     isRoleUser(): boolean {
         if (this.currentUser) {
-            return this.currentUser.authorities.some((authority: string) =>
-            {
-                return authority === Authority.USER;
-            });
+            return this.currentUser.role === Authority.USER;
         } else {
             return false;
         }
