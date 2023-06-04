@@ -1,6 +1,5 @@
-package hr.tvz.lovakovic.studapp.repository;
+package hr.tvz.lovakovic.studapp.student;
 
-import hr.tvz.lovakovic.studapp.model.Student;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;

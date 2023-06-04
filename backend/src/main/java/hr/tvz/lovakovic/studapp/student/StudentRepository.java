@@ -1,6 +1,6 @@
-package hr.tvz.lovakovic.studapp.repository;
+package hr.tvz.lovakovic.studapp.student;
 
-import hr.tvz.lovakovic.studapp.model.Student;
+import hr.tvz.lovakovic.studapp.student.Student;
 
 import java.util.List;
 import java.util.Optional;

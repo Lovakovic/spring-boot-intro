@@ -1,8 +1,6 @@
-package hr.tvz.lovakovic.studapp.mapper;
+package hr.tvz.lovakovic.studapp.student;
 
-import hr.tvz.lovakovic.studapp.model.Student;
 import hr.tvz.lovakovic.studapp.model.StudentCommand;
-import hr.tvz.lovakovic.studapp.model.StudentDTO;
 
 import java.time.format.DateTimeFormatter;
 

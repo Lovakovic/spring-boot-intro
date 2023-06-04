@@ -1,9 +1,6 @@
-package hr.tvz.lovakovic.studapp.controller;
+package hr.tvz.lovakovic.studapp.student;
 
-import hr.tvz.lovakovic.studapp.exception.StudentAlreadyExistsException;
 import hr.tvz.lovakovic.studapp.model.StudentCommand;
-import hr.tvz.lovakovic.studapp.model.StudentDTO;
-import hr.tvz.lovakovic.studapp.service.StudentService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Pair;

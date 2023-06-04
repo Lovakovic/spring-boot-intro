@@ -1,5 +1,6 @@
-package hr.tvz.lovakovic.studapp.model;
+package hr.tvz.lovakovic.studapp.student;
 
+import hr.tvz.lovakovic.studapp.model.Course;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

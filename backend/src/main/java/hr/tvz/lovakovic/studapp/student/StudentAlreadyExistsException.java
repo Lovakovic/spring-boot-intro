@@ -1,4 +1,4 @@
-package hr.tvz.lovakovic.studapp.exception;
+package hr.tvz.lovakovic.studapp.student;
 
 public class StudentAlreadyExistsException extends RuntimeException {
     public StudentAlreadyExistsException(String message) {

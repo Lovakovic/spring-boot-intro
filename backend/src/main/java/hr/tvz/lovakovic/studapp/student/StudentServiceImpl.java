@@ -1,11 +1,6 @@
-package hr.tvz.lovakovic.studapp.service;
+package hr.tvz.lovakovic.studapp.student;
 
-import hr.tvz.lovakovic.studapp.exception.StudentAlreadyExistsException;
-import hr.tvz.lovakovic.studapp.mapper.StudentMapper;
-import hr.tvz.lovakovic.studapp.model.Student;
 import hr.tvz.lovakovic.studapp.model.StudentCommand;
-import hr.tvz.lovakovic.studapp.model.StudentDTO;
-import hr.tvz.lovakovic.studapp.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
