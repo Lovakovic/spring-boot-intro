@@ -1,6 +1,5 @@
-package hr.tvz.lovakovic.studapp.repository;
+package hr.tvz.lovakovic.studapp.user;
 
-import hr.tvz.lovakovic.studapp.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
