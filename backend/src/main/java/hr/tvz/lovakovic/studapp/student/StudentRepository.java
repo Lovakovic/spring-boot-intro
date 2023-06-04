@@ -1,7 +1,5 @@
 package hr.tvz.lovakovic.studapp.student;
 
-import hr.tvz.lovakovic.studapp.student.Student;
-
 import java.util.List;
 import java.util.Optional;
 
