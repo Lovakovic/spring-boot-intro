@@ -38,10 +38,10 @@ CREATE TABLE "user" (
 );
 
 CREATE TABLE login_history (
-   id BIGINT PRIMARY KEY AUTO_INCREMENT,
-   date_time_login TIMESTAMP(6) NOT NULL,
-   date_time_logoff TIMESTAMP(6),
-   role SMALLINT,
-   user_id BIGINT NOT NULL,
-   FOREIGN KEY (user_id) REFERENCES "user" (id)
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    date_time_login TIMESTAMP(6) NOT NULL,
+    date_time_logoff TIMESTAMP(6),
+    role VARCHAR(255),
+    user_id BIGINT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES "user" (id)
 );

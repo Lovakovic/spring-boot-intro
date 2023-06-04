@@ -18,7 +18,8 @@ public class LoginRecord {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @JoinColumn(name = "role_id", nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role", nullable = false)
     private Role role;
 
     @Column(name = "date_time_login", nullable = false)
@@ -27,4 +28,3 @@ public class LoginRecord {
     @Column(name = "date_time_logoff")
     private LocalDateTime dateTimeLogoff;
 }
-
