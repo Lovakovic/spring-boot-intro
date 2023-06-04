@@ -36,7 +36,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link cursor-pointer">
-                        <span>{{ 'ROLE' | translate }}: <span *ngFor="let role of userService?.currentUser?.authorities">{{role}} </span></span>
+                        <span>{{ 'ROLE' | translate }}: <span>{{userService.currentUser.role}} </span></span>
                     </a>
                 </li>
                 <li class="nav-item">
