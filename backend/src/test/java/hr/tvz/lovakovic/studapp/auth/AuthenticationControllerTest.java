@@ -34,13 +34,7 @@ public class AuthenticationControllerTest {
     private AuthenticationService authenticationService;
 
     @MockBean
-    private UserService userService;
-
-    @MockBean
     private JwtService jwtService;
-
-    @MockBean
-    private UserDetailsService userDetailsService;
 
     @Test
     public void shouldRegisterUser() throws Exception {
