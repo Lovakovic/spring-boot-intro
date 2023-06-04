@@ -1,7 +1,7 @@
-package hr.tvz.lovakovic.studapp.service;
+package hr.tvz.lovakovic.studapp.course;
 
-import hr.tvz.lovakovic.studapp.model.Course;
-import hr.tvz.lovakovic.studapp.model.CourseDTO;
+import hr.tvz.lovakovic.studapp.course.Course;
+import hr.tvz.lovakovic.studapp.course.CourseDTO;
 
 import java.util.List;
 

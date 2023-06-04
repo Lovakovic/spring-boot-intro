@@ -1,4 +1,4 @@
-package hr.tvz.lovakovic.studapp.model;
+package hr.tvz.lovakovic.studapp.course;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package hr.tvz.lovakovic.studapp.model;
+package hr.tvz.lovakovic.studapp.course;
 
 import hr.tvz.lovakovic.studapp.student.Student;
 import jakarta.persistence.*;

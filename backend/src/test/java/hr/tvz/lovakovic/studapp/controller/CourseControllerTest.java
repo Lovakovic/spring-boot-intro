@@ -1,9 +1,10 @@
 package hr.tvz.lovakovic.studapp.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import hr.tvz.lovakovic.studapp.model.CourseDTO;
+import hr.tvz.lovakovic.studapp.course.CourseController;
+import hr.tvz.lovakovic.studapp.course.CourseDTO;
 import hr.tvz.lovakovic.studapp.security.JwtService;
-import hr.tvz.lovakovic.studapp.service.CourseService;
+import hr.tvz.lovakovic.studapp.course.CourseService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

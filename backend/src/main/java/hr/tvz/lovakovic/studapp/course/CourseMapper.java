@@ -1,7 +1,4 @@
-package hr.tvz.lovakovic.studapp.mapper;
-
-import hr.tvz.lovakovic.studapp.model.Course;
-import hr.tvz.lovakovic.studapp.model.CourseDTO;
+package hr.tvz.lovakovic.studapp.course;
 
 public class CourseMapper {
     public static CourseDTO toDTO(Course course) {

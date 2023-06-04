@@ -1,9 +1,5 @@
-package hr.tvz.lovakovic.studapp.service;
+package hr.tvz.lovakovic.studapp.course;
 
-import hr.tvz.lovakovic.studapp.mapper.CourseMapper;
-import hr.tvz.lovakovic.studapp.model.Course;
-import hr.tvz.lovakovic.studapp.model.CourseDTO;
-import hr.tvz.lovakovic.studapp.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,5 @@
-package hr.tvz.lovakovic.studapp.controller;
+package hr.tvz.lovakovic.studapp.course;
 
-import hr.tvz.lovakovic.studapp.model.CourseDTO;
-import hr.tvz.lovakovic.studapp.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
