@@ -1,11 +1,7 @@
-package hr.tvz.lovakovic.studapp.service;
+package hr.tvz.lovakovic.studapp.user;
 
-import hr.tvz.lovakovic.studapp.mapper.UserMapper;
-import hr.tvz.lovakovic.studapp.model.LoginRecord;
-import hr.tvz.lovakovic.studapp.model.User;
-import hr.tvz.lovakovic.studapp.model.UserDTO;
-import hr.tvz.lovakovic.studapp.repository.LoginRepository;
-import hr.tvz.lovakovic.studapp.repository.UserRepository;
+import hr.tvz.lovakovic.studapp.audit.LoginRecord;
+import hr.tvz.lovakovic.studapp.audit.LoginRecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -17,12 +13,12 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final LoginRepository loginRepository;
+    private final LoginRecordRepository loginRecordRepository;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, LoginRepository loginRepository) {
+    public UserServiceImpl(UserRepository userRepository, LoginRecordRepository loginRecordRepository) {
         this.userRepository = userRepository;
-        this.loginRepository = loginRepository;
+        this.loginRecordRepository = loginRecordRepository;
     }
 
     @Override
@@ -40,7 +36,7 @@ public class UserServiceImpl implements UserService {
             loginRecordHistory.setUser(user);
             loginRecordHistory.setRole(user.getRole());
             loginRecordHistory.setDateTimeLogin(LocalDateTime.now());
-            loginRepository.save(loginRecordHistory);
+            loginRecordRepository.save(loginRecordHistory);
         }
     }
 
@@ -50,10 +46,10 @@ public class UserServiceImpl implements UserService {
         Optional<User> userOptional = userRepository.findOneByUsername(username);
         if (userOptional.isPresent()) {
             User user = userOptional.get();
-            LoginRecord lastLoginRecordRecord = loginRepository.findTopByUserOrderByDateTimeLoginDesc(user);
+            LoginRecord lastLoginRecordRecord = loginRecordRepository.findTopByUserOrderByDateTimeLoginDesc(user);
             if (lastLoginRecordRecord != null && lastLoginRecordRecord.getDateTimeLogoff() == null) {
                 lastLoginRecordRecord.setDateTimeLogoff(LocalDateTime.now());
-                loginRepository.save(lastLoginRecordRecord);
+                loginRecordRepository.save(lastLoginRecordRecord);
             }
         }
     }

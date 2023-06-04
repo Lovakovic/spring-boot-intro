@@ -1,7 +1,5 @@
-package hr.tvz.lovakovic.studapp.service;
+package hr.tvz.lovakovic.studapp.user;
 
-import hr.tvz.lovakovic.studapp.model.User;
-import hr.tvz.lovakovic.studapp.model.UserDTO;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;

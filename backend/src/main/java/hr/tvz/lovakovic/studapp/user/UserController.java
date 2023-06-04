@@ -1,7 +1,5 @@
-package hr.tvz.lovakovic.studapp.controller;
+package hr.tvz.lovakovic.studapp.user;
 
-import hr.tvz.lovakovic.studapp.model.UserDTO;
-import hr.tvz.lovakovic.studapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

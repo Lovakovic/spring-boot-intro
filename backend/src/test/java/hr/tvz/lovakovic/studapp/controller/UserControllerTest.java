@@ -8,8 +8,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import hr.tvz.lovakovic.studapp.model.UserDTO;
-import hr.tvz.lovakovic.studapp.service.UserService;
+import hr.tvz.lovakovic.studapp.user.UserDTO;
+import hr.tvz.lovakovic.studapp.user.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,4 @@
-package hr.tvz.lovakovic.studapp.mapper;
-
-import hr.tvz.lovakovic.studapp.model.User;
-import hr.tvz.lovakovic.studapp.model.UserDTO;
+package hr.tvz.lovakovic.studapp.user;
 
 public class UserMapper {
     public static UserDTO toDTO(User user) {
