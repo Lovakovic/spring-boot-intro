@@ -38,13 +38,6 @@ public class LoginRecordControllerTest {
     @MockBean
     private JwtService jwtService;
 
-    @MockBean
-    private UserService userService;
-
-    @MockBean
-    private UserDetailsService userDetailsService;
-
-
     private LoginRecordDTO loginRecord;
 
     @Before
