@@ -1,9 +1,6 @@
 package hr.tvz.lovakovic.studapp.course;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import hr.tvz.lovakovic.studapp.course.CourseController;
-import hr.tvz.lovakovic.studapp.course.CourseDTO;
-import hr.tvz.lovakovic.studapp.course.CourseService;
 import hr.tvz.lovakovic.studapp.security.JwtService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
