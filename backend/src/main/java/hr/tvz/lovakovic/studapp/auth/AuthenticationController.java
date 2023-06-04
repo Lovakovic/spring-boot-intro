@@ -1,6 +1,6 @@
 package hr.tvz.lovakovic.studapp.auth;
 
-import hr.tvz.lovakovic.studapp.service.UserService;
+import hr.tvz.lovakovic.studapp.user.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

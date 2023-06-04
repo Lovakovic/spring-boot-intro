@@ -2,7 +2,7 @@ package hr.tvz.lovakovic.studapp.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import hr.tvz.lovakovic.studapp.security.JwtService;
-import hr.tvz.lovakovic.studapp.service.UserService;
+import hr.tvz.lovakovic.studapp.user.UserService;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;

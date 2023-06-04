@@ -1,8 +1,8 @@
 package hr.tvz.lovakovic.studapp.auth;
 
-import hr.tvz.lovakovic.studapp.model.Role;
-import hr.tvz.lovakovic.studapp.model.User;
-import hr.tvz.lovakovic.studapp.repository.UserRepository;
+import hr.tvz.lovakovic.studapp.user.Role;
+import hr.tvz.lovakovic.studapp.user.User;
+import hr.tvz.lovakovic.studapp.user.UserRepository;
 import hr.tvz.lovakovic.studapp.security.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
