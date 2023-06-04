@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.userCredentials = new UserCredentials();
-    // provjeriti da li je vec ulogiran
   }
 
 
@@ -35,8 +34,14 @@ export class LoginComponent implements OnInit {
     this.loginFailed = false;
 
     this.loginService.authenticate(this.userCredentials).subscribe(
-      (jwtToken: JwtToken) => this.successfulLogin(jwtToken),
-      () => this.loginFailed = true
+      (jwtToken: JwtToken) => {
+          console.log(jwtToken);
+          this.successfulLogin(jwtToken);
+      },
+      () => {
+          console.log("failed")
+          this.loginFailed = true;
+      }
     ).add(() => this.authenticating = false);
   }
 
