@@ -4,6 +4,7 @@ import hr.tvz.lovakovic.studapp.security.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -28,6 +29,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/api/auth/register", "/api/auth/authenticate").permitAll()
                         .requestMatchers("/api/auth/logout").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/student/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/student/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/student/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .sessionManagement()
