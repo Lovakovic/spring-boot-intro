@@ -1,8 +1,5 @@
 package hr.tvz.lovakovic.studapp.course;
 
-import hr.tvz.lovakovic.studapp.course.Course;
-import hr.tvz.lovakovic.studapp.course.CourseDTO;
-
 import java.util.List;
 
 public interface CourseService {
