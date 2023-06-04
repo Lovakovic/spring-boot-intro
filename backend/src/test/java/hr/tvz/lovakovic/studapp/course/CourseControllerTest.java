@@ -1,4 +1,4 @@
-package hr.tvz.lovakovic.studapp.controller;
+package hr.tvz.lovakovic.studapp.course;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import hr.tvz.lovakovic.studapp.course.CourseController;
