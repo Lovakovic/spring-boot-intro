@@ -18,15 +18,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
     getCurrentUser(): Observable<User> {
-        return this.http.get<User>(`${this.usersUrl}/current-user`).pipe(
-            catchError(err => {
-                if (err.status === 403) {
-                    localStorage.removeItem('token'); // remove token from localstorage
-                }
-
-                return throwError(err);
-            })
-        );
+        return this.http.get<User>(`${this.usersUrl}/current-user`);
     }
 
     isRoleAdmin(): boolean {
