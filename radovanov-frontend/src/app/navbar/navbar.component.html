@@ -17,7 +17,7 @@
                         <span>{{ 'USERNAME' | translate }}: {{userService?.currentUser?.username}}</span>
                     </a>
                 </li>
-                <ng-container *ngIf="userService.isRoleUser()">
+                <ng-container *ngIf="!userService.isRoleAdmin()">
                     <li class="nav-item">
                         <a class="nav-link cursor-pointer">
                             <span>|</span>

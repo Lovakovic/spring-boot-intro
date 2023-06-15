@@ -36,12 +36,4 @@ export class UserService {
           return false;
       }
     }
-
-    isRoleUser(): boolean {
-        if (this.currentUser) {
-            return this.currentUser.role === Authority.USER;
-        } else {
-            return false;
-        }
-    }
 }
