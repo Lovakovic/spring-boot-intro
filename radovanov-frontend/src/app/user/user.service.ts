@@ -1,10 +1,9 @@
-import { Injectable } from '@angular/core';
-import { SERVER_API_URL } from '../constants/app.constants';
-import { HttpClient } from '@angular/common/http';
-import { User } from './user.model';
-import {Observable, throwError} from 'rxjs';
-import { Authority } from '../constants/authority.constants';
-import {catchError} from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {SERVER_API_URL} from '../constants/app.constants';
+import {HttpClient} from '@angular/common/http';
+import {User} from './user.model';
+import {Observable} from 'rxjs';
+import {Authority} from '../constants/authority.constants';
 
 @Injectable({
   providedIn: 'root'
