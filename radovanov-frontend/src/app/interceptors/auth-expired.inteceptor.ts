@@ -14,11 +14,14 @@ export class AuthExpiredInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
-      tap(null, (err: HttpErrorResponse) => { // tslint:disable-line: deprecation
-        if (err.status === 401) {
-          this.loginService.logout();
-          this.router.navigate(['/login']);
-        }
+      tap({
+          next: null,
+          error: (err: HttpErrorResponse) => {
+              if (err.status === 401) {
+                  this.loginService.logout();
+                  this.router.navigate(['/login']);
+              }
+          }
       })
     );
   }
